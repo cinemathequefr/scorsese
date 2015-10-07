@@ -42,7 +42,7 @@ $(function() {
 
       // Place the map in the section we're entering (downwards i, upwards i - 1)
       var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
-      map.placeMap($(sections[j].elemSection).data("id"));
+      map.insertMap($(sections[j].elemSection).data("id"));
 
     });
 
@@ -79,7 +79,7 @@ var map = (function (data, containers) {
   var m; // Map instance
   var gm = google.maps;
   var elemMap;
-  var places;
+  var places, maps; // Extended data objects
 
   var options = {
     center: new gm.LatLng(40.766300, -73.977734),
@@ -104,7 +104,7 @@ var map = (function (data, containers) {
     path: "M-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
     fillColor: "#eee",
     fillOpacity: 1,
-    scale: 1,
+    scale: 0.75,
     strokeOpacity: 1,
     strokeColor: "#666",
     strokeWeight: 1
@@ -114,11 +114,10 @@ var map = (function (data, containers) {
   var init = function () {
     elemMap = $("<div id='map'></div>")[0];
     m = new gm.Map(elemMap, options);
-    placeMap(containers[0].id); // Place map in the first container
+    $(elemMap).appendTo(containers[0].elem);
 
     places = _.map(data.places, function (place) {
       var position = new gm.LatLng(place.lat, place.lng);
-      // var icon = pin; // TODO: colored icons
       var markerOff = new gm.Marker({ map: m, position: position, icon: dot });
       var markerOn = new gm.Marker({ map: m, position: position, icon: pin });
       return _.assign(place, {
@@ -128,16 +127,33 @@ var map = (function (data, containers) {
       });
     });
 
+    maps = _.map(data.maps, function (map) {
+      var latLngBounds = _.reduce(
+        map.places,
+        function (bnds, id) {
+          return bnds.extend(_.find(places, { id: id }).position);
+        },
+        new gm.LatLngBounds()
+      );
+      return _.assign(map, {
+        latLngBounds: latLngBounds
+      });
+    });
+
+
   };
 
-  var placeMap = function (id) { // Move map to the given map container + TODO: update markers
-    var elem = _.find(containers, { id: id }).elem;
-    if (elem) {
-      $(elemMap).detach().appendTo(elem);
+  var insertMap = function (id) { // Move map to the given map container + update
+    var elemMapContainer = _.find(containers, { id: id }).elem;
+
+    if (elemMapContainer) {
+      $(elemMap).detach().appendTo(elemMapContainer);
     }
 
+    var thisMapData = _.find(maps, { id: id });
+
     var part = _.partition(places, function (place) { // Splits places in 2 groups: belonging/not belonging to the map
-      return _.indexOf(_.find(data.maps, { id: id }).places, place.id) > -1;
+      return _.indexOf(thisMapData.places, place.id) > -1;
     });
 
     _.forEach(part[0], function (place) {
@@ -150,6 +166,8 @@ var map = (function (data, containers) {
       place.markerOff.setVisible(true);
     });
 
+    m.fitBounds(thisMapData.latLngBounds); // Fit bounds for this map
+
 
 
 
@@ -158,7 +176,7 @@ var map = (function (data, containers) {
 
   return {
     init: init,
-    placeMap: placeMap
+    insertMap: insertMap
   };
 
 })(

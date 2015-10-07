@@ -97,7 +97,7 @@ section {
 .mapContainer {
   display: block; position: relative;
   width: 100%; height: 55vh;
-  background-color: #fff; background-color: #ddd; margin-bottom-bottom: 4px;
+  background-color: #fff; margin-bottom-bottom: 4px;
   z-index: 2;
 }
 
