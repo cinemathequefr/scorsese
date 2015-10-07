@@ -124,18 +124,11 @@ data.places = [
   { id: 87, filmId: 10, lat: 40.96904, lng: -73.95493, name: "Closter Plaza, 71 Vervalen Street, Closter" },
   { id: 88, filmId: 10, lat: 40.98562, lng: -73.70661, name: "Willow Ridge Country Club, 123 North Street, Harrison" },
   { id: 89, filmId: 10, lat: 40.75482, lng: -74.00706, name: "West 30th Street Heliport, West 30th Street at 12th Avenue / Hudson River Greenway, Chelsea" }
-
-
-
-
-
-
-
-
-
 ];
 
-data.groups = [ // Groups currently represent the films, but this could change
+
+// data.groups = [
+data.maps = [
   { id: 1, color: "#369", places: [1, 2, 3, 4, 5, 6, 7] },
   { id: 2, color: "#69f", places: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20/*, 21, 22*/] },
   { id: 3, color: "#f36", places: [23, 24, 25, 26, 27, 28, 29] },
@@ -147,4 +140,3 @@ data.groups = [ // Groups currently represent the films, but this could change
   { id: 9, color: "#f36", places: [65, 66, 67, 68, 69, 70, 71, 72] },
   { id: 10, color: "#f69", places: [73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89] }
 ];
-
