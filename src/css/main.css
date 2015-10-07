@@ -1,0 +1,118 @@
+html, body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+}
+
+
+body {}
+
+.film {
+  position: relative;
+  z-index: 1;
+}
+
+.row {
+  display: block; position: relative;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.screen {
+  height: 100vh;
+}
+
+.splash {
+  position: relative; overflow: hidden;
+  display: block;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: cover;
+  z-index: 1;
+}
+
+.splash > .overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #000; opacity: 1;
+}
+
+.splash .quote {
+  display: block; position: absolute;
+  top: 50%;
+  width: 100%;
+  color: #fff;
+  font-family: Source Sans Pro; font-weight: 300; font-size: 2.5rem;
+  line-height: 1.4;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.quote:before { content: "«";}
+.quote:after { content: "»";}
+
+.splash .title {
+  display: block; position: fixed;
+  top: 50%;
+  max-width: 800px;
+  font-family: Aldrich; font-size: 6rem; font-weight: 700;
+  line-height: 6rem;
+  color: #fff;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-50%);
+  /*display: none;*/
+}
+
+.year {
+  font-family: Source Sans Pro;
+  display: block;
+  margin-top: -1.5rem;
+  font-size: 4rem;
+}
+
+.content {
+  position: relative;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.text {
+  padding: 48px 0;
+}
+
+.text:last-child {
+  padding-bottom: 35vh;
+}
+
+.text p {
+  width: 600px;
+  margin-left: auto; margin-right: auto;
+  color: #333;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.mapContainer {
+  display: block; position: relative;
+  width: 100%; height: 55vh;
+  background-color: #fff;
+  z-index: 2;
+}
+
+/*
+.mapContainer > .title {
+  position: absolute;
+  top: 8px; right: 6px; max-width: 180px;
+  color: #333;
+  font-size: 1rem; font-family: Aldrich;
+  text-transform: uppercase; text-align: right;
+  z-index: 1;
+}
+*/
+
+.map {
+  position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
+  z-index: 1;
+}
