@@ -100,6 +100,16 @@ var map = (function (data, containers) {
     strokeWeight: 1.5
   };
 
+  var dot = {
+    path: "M-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
+    fillColor: "#eee",
+    fillOpacity: 1,
+    scale: 1,
+    strokeOpacity: 1,
+    strokeColor: "#666",
+    strokeWeight: 1
+  }
+
   // Initialization: instantiate map + process data
   var init = function () {
     elemMap = $("<div id='map'></div>")[0];
@@ -108,11 +118,12 @@ var map = (function (data, containers) {
 
     places = _.map(data.places, function (place) {
       var position = new gm.LatLng(place.lat, place.lng);
-      var icon = pin; // TODO: colored icons
-      var marker = new gm.Marker({ map: m, position: position, icon: icon });
+      // var icon = pin; // TODO: colored icons
+      var markerOff = new gm.Marker({ map: m, position: position, icon: dot });
+      var markerOn = new gm.Marker({ map: m, position: position, icon: pin });
       return _.assign(place, {
-        icon: icon,
-        marker: marker,
+        markerOff: markerOff,
+        markerOn: markerOn,
         position: position
       });
     });
@@ -124,6 +135,25 @@ var map = (function (data, containers) {
     if (elem) {
       $(elemMap).detach().appendTo(elem);
     }
+
+    var part = _.partition(places, function (place) { // Splits places in 2 groups: belonging/not belonging to the map
+      return _.indexOf(_.find(data.maps, { id: id }).places, place.id) > -1;
+    });
+
+    _.forEach(part[0], function (place) {
+      place.markerOn.setVisible(true);
+      place.markerOff.setVisible(false);
+    });
+
+    _.forEach(part[1], function (place) {
+      place.markerOn.setVisible(false);
+      place.markerOff.setVisible(true);
+    });
+
+
+
+
+
   };
 
   return {
