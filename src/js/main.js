@@ -82,7 +82,8 @@ var map = (function (data, containers) {
   var m; // Map instance
   var gm = google.maps;
   var elemMap;
-  var places, maps; // Extended data objects
+  // var places, maps; // Extended data objects
+  var groups; // Extended groups
 
   var options = {
     center: new gm.LatLng(40.766300, -73.977734),
@@ -111,18 +112,18 @@ var map = (function (data, containers) {
     scale: 1,
     strokeOpacity: 1,
     strokeColor: "#000",
-    strokeWeight: 1.5
+    strokeWeight: 1
   };
 
   var dot = {
     path: "M-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
-    fillColor: "#eee",
-    fillOpacity: 1,
+    fillColor: "#ddd",
+    fillOpacity: 0.5,
     scale: 0.75,
-    strokeOpacity: 1,
-    strokeColor: "#666",
+    strokeOpacity: 0.5,
+    strokeColor: "#000",
     strokeWeight: 1
-  }
+  };
 
   // Initialization: instantiate map + process data
   var init = function () {
@@ -130,30 +131,36 @@ var map = (function (data, containers) {
     m = new gm.Map(elemMap, options);
     $(elemMap).appendTo(containers[0].elem);
 
-    places = _.map(data.places, function (place) {
-      var position = new gm.LatLng(place.lat, place.lng);
-      var markerOff = new gm.Marker({ map: m, position: position, icon: dot });
-      var markerOn = new gm.Marker({ map: m, position: position, icon: pin });
-      return _.assign(place, {
-        markerOff: markerOff,
-        markerOn: markerOn,
-        position: position
-      });
-    });
+    groups = _.map(
+      _.assign({}, data.groups),
+      function (gp) {
+        var places = _.map(gp.places, function (plid) { // Replace place ids by place objects
+          return _
+            .chain(data.places)
+            .find({ id: plid })
+            .thru(function (item) {
+              var pos = new gm.LatLng(item.lat, item.lng);
+              return _.assign({
+                position: new gm.LatLng(item.lat, item.lng)
+              }, item);
+            })
+            .value();
+        });
+        return _.assign(gp, {
+          places: places,
+          latLngBounds: _.reduce( // LatLngBounds for the group
+            places,
+            function (bnds, pl) {
+              return bnds.extend(pl.position);
+            },
+            new gm.LatLngBounds()
+          ),
+          pinIcon: _.assign({}, pin, { fillColor: gp.color }),
+          dotIcon: _.assign({}, dot, { fillColor: gp.color })
+        });
 
-    maps = _.map(data.maps, function (map) {
-      var latLngBounds = _.reduce(
-        map.places,
-        function (bnds, id) {
-          return bnds.extend(_.find(places, { id: id }).position);
-        },
-        new gm.LatLngBounds()
-      );
-      return _.assign(map, {
-        latLngBounds: latLngBounds
-      });
-    });
-
+      }
+    );
 
   };
 
@@ -164,28 +171,17 @@ var map = (function (data, containers) {
       $(elemMap).detach().appendTo(elemMapContainer);
     }
 
-    var thisMapData = _.find(maps, { id: id });
-
-    var part = _.partition(places, function (place) { // Splits places in 2 groups: belonging/not belonging to the map
-      return _.indexOf(thisMapData.places, place.id) > -1;
+    _.forEach(groups, function (gp) {
+      var isActiveGroup = gp.id === id;
+      _.forEach(gp.places, function (pl) {
+        if (pl.marker) pl.marker.setMap(null);
+        _.assign(pl, { marker: new gm.Marker({ map: m, position: pl.position, icon: (isActiveGroup ? gp.pinIcon : gp.dotIcon) }) });
+      });
+      if (isActiveGroup) {
+        m.fitBounds(gp.latLngBounds);
+        m.setZoom(m.getZoom() - 1);
+      }
     });
-
-    _.forEach(part[0], function (place) {
-      place.markerOn.setVisible(true);
-      place.markerOff.setVisible(false);
-    });
-
-    _.forEach(part[1], function (place) {
-      place.markerOn.setVisible(false);
-      place.markerOff.setVisible(true);
-    });
-
-    m.fitBounds(thisMapData.latLngBounds); // Fit bounds for this map
-
-
-
-
-
   };
 
   return {

@@ -127,8 +127,7 @@ data.places = [
 ];
 
 
-// data.groups = [
-data.maps = [
+data.groups = [ // Each group is shown on a different map
   { id: 1, color: "#369", places: [1, 2, 3, 4, 5, 6, 7] },
   { id: 2, color: "#69f", places: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20/*, 21, 22*/] },
   { id: 3, color: "#f36", places: [23, 24, 25, 26, 27, 28, 29] },
