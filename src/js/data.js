@@ -21,7 +21,7 @@ data.places = [
   { id: 95, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street" },
 
   // Mean Streets
-  { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick" },
+  { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
   { id: 2, filmId: 2, lat: 40.72176, lng: -73.99707, name: "Volpe Bar" },
   { id: 3, filmId: 2, lat: 40.71816, lng: -73.99794, name: "Mulberry St and Hester St" },
   { id: 4, filmId: 2, lat: 40.7181, lng: -74.0128, name: "The Bridge" },

@@ -1,6 +1,29 @@
 $(function() {
 
+  var $body = $("body");
+
+  // Initialize map
   map.init(data);
+
+  // Bindings
+  $body.on("click", "a[data-point]", function (e) {
+    var group;
+    var place;
+    var id = $(e.target).data("point");
+
+    group = _.find(map.getGroups(), function (gp) { // Find group where the point belongs (with current values for map objects)
+      place = _.find(gp.places, { id: id });
+      return place;
+    });
+
+    map.panTo(place);
+    map.bounce(place, 2);
+
+
+  });
+
+
+
 
 
   var ctrl = new ScrollMagic.Controller();
@@ -105,12 +128,13 @@ var map = (function (data, containers) {
     zoomControl: true
   };
 
+
   var pin = {
     path: "m0.05195,-0.07428c-0.63931,-3.138 -1.76633,-5.74954 -3.13148,-8.16974c-1.01259,-1.79526 -2.18562,-3.4523 -3.271,-5.19333c-0.36232,-0.58109 -0.675,-1.19516 -1.02315,-1.79822c-0.69614,-1.20605 -1.26054,-2.60439 -1.22469,-4.41824c0.03505,-1.77219 0.54759,-3.19382 1.28671,-4.35614c1.21562,-1.91174 3.25182,-3.47919 5.9839,-3.89108c2.23387,-0.33679 4.32825,0.23218 5.81332,1.10065c1.21365,0.70972 2.15358,1.65768 2.86792,2.7749c0.74567,1.16614 1.25917,2.54376 1.3022,4.34067c0.02211,0.92065 -0.12862,1.77319 -0.341,2.48038c-0.21486,0.71582 -0.5605,1.31423 -0.86803,1.95333c-0.6004,1.24765 -1.353,2.39072 -2.1084,3.53445c-2.24988,3.40698 -4.36157,6.88141 -5.28631,11.64237z",
     fillColor: "#fff",
     fillOpacity: 1,
     scale: 1,
-    strokeOpacity: 1,
+    strokeOpacity: 0.8,
     strokeColor: "#000",
     strokeWeight: 1
   };
@@ -184,9 +208,28 @@ var map = (function (data, containers) {
     });
   };
 
+  var bounce = function (place, times) { // place: place *object*, times: how many bounces
+    times = parseInt(times, 10) || 1;
+    place.marker.setAnimation(gm.Animation.BOUNCE);
+    place.timeout = window.setTimeout(function () {
+      place.marker.setAnimation();
+    }, times * 710); // http://stackoverflow.com/questions/7339200/bounce-a-pin-in-google-maps-once
+  };
+
+  var panTo = function (place) { // place: place *object*
+    m.panTo(place.position);
+  };
+
+  var getGroups = function () {
+    return groups;
+  };
+
   return {
+    bounce: bounce,
+    getGroups: getGroups,
     init: init,
-    insertMap: insertMap
+    insertMap: insertMap,
+    panTo: panTo
   };
 
 })(
@@ -198,4 +241,6 @@ var map = (function (data, containers) {
     };
   })
 );
+
+
 
