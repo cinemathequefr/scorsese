@@ -177,8 +177,8 @@ var map = (function (data, containers) {
         if (pl.marker) pl.marker.setMap(null);
         _.assign(pl, { marker: new gm.Marker({ map: m, position: pl.position, icon: (isActiveGroup ? gp.pinIcon : gp.dotIcon) }) });
       });
-      if (isActiveGroup) {
-        m.fitBounds(gp.latLngBounds);
+      if (isActiveGroup && gp.places.length > 0) { // For the current group (which has at least one place)
+        m.fitBounds(gp.latLngBounds); // Because settings bounds for no place sends us in the middle of the Pacific Ocean
         m.setZoom(m.getZoom() - 1);
       }
     });
