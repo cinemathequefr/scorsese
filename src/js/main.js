@@ -75,6 +75,9 @@ $(function() {
 });
 
 
+
+// Map
+
 var map = (function (data, containers) {
   var m; // Map instance
   var gm = google.maps;
@@ -85,7 +88,18 @@ var map = (function (data, containers) {
     center: new gm.LatLng(40.766300, -73.977734),
     disableDefaultUI: true,
     scrollwheel: false,
-    styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}], // https://snazzymaps.com/style/1/pale-dawn
+    styles: [
+      // https://snazzymaps.com/style/1/pale-dawn
+      {"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},
+      // + Some extra customization
+      {"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+      {"featureType":"transit","stylers":[{"visibility":"off"}]},
+      {"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},
+      {"featureType":"administrative.province","elementType":"labels.text","stylers":[{"visibility":"simplified"},{"color":"#848fa4"}]},
+      {"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#e4d7c6"}]},
+      {"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},
+      {"featureType":"road.highway.controlled_access","elementType":"labels.text","stylers":[{"visibility":"simplified"},{"color":"#666666"}]}
+    ],
     zoom: 13,
     zoomControl: true
   };
