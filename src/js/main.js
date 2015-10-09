@@ -1,29 +1,22 @@
-$(function() {
 
+
+
+
+
+$(function () {
   var $body = $("body");
 
-  // Initialize map
-  map.init(data);
 
-  // Bindings
-  $body.on("click", "a[data-point]", function (e) {
-    var group;
-    var place;
-    var id = $(e.target).data("point");
+  var mapView = new MapView(
+    { groups: Data.groups },
+    _.map($("section[data-id]").find(".mapContainer:first"), function (elem) { // Add hoc function to get the containers array
+      return $(elem).attr("data-id", $(elem).closest("section").data("id")).eq(0);
+    })
+  );
 
-    group = _.find(map.getGroups(), function (gp) { // Find group where the point belongs (with current values for map objects)
-      place = _.find(gp.places, { id: id });
-      return place;
-    });
-
-    map.panTo(place);
-    map.bounce(place, 2);
-
-
-  });
-
-
-
+  mapView.init();
+  // mapView.insert(1);
+  // mapView.drawMarkers(1);
 
 
   var ctrl = new ScrollMagic.Controller();
@@ -65,7 +58,12 @@ $(function() {
 
       // Place the map in the section we're entering (downwards i, upwards i - 1)
       var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
-      map.insertMap($(sections[j].elemSection).data("id"));
+      // map.insertMap($(sections[j].elemSection).data("id"));
+
+      var mapId = $(sections[j].elemMapContainer).data("id");
+      mapView.insert(mapId);
+      mapView.drawMarkers(mapId);
+
 
     });
 
@@ -95,152 +93,9 @@ $(function() {
 
 
 
+
+
+
+
+
 });
-
-
-
-// Map
-
-var map = (function (data, containers) {
-  var m; // Map instance
-  var gm = google.maps;
-  var elemMap;
-  // var places, maps; // Extended data objects
-  var groups; // Extended groups
-
-  var options = {
-    center: new gm.LatLng(40.766300, -73.977734),
-    disableDefaultUI: true,
-    scrollwheel: false,
-    styles: [
-      // https://snazzymaps.com/style/1/pale-dawn
-      {"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},
-      // + Some extra customization
-      {"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
-      {"featureType":"transit","stylers":[{"visibility":"off"}]},
-      {"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},
-      {"featureType":"administrative.province","elementType":"labels.text","stylers":[{"visibility":"simplified"},{"color":"#848fa4"}]},
-      {"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#e4d7c6"}]},
-      {"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},
-      {"featureType":"road.highway.controlled_access","elementType":"labels.text","stylers":[{"visibility":"simplified"},{"color":"#666666"}]}
-    ],
-    zoom: 13,
-    zoomControl: true
-  };
-
-
-  var pin = {
-    path: "m0.05195,-0.07428c-0.63931,-3.138 -1.76633,-5.74954 -3.13148,-8.16974c-1.01259,-1.79526 -2.18562,-3.4523 -3.271,-5.19333c-0.36232,-0.58109 -0.675,-1.19516 -1.02315,-1.79822c-0.69614,-1.20605 -1.26054,-2.60439 -1.22469,-4.41824c0.03505,-1.77219 0.54759,-3.19382 1.28671,-4.35614c1.21562,-1.91174 3.25182,-3.47919 5.9839,-3.89108c2.23387,-0.33679 4.32825,0.23218 5.81332,1.10065c1.21365,0.70972 2.15358,1.65768 2.86792,2.7749c0.74567,1.16614 1.25917,2.54376 1.3022,4.34067c0.02211,0.92065 -0.12862,1.77319 -0.341,2.48038c-0.21486,0.71582 -0.5605,1.31423 -0.86803,1.95333c-0.6004,1.24765 -1.353,2.39072 -2.1084,3.53445c-2.24988,3.40698 -4.36157,6.88141 -5.28631,11.64237z",
-    fillColor: "#fff",
-    fillOpacity: 1,
-    scale: 1,
-    strokeOpacity: 0.8,
-    strokeColor: "#000",
-    strokeWeight: 1
-  };
-
-  var dot = {
-    path: "M-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
-    fillColor: "#ddd",
-    fillOpacity: 0.5,
-    scale: 0.75,
-    strokeOpacity: 0.5,
-    strokeColor: "#000",
-    strokeWeight: 1
-  };
-
-  // Initialization: instantiate map + process data
-  var init = function () {
-    elemMap = $("<div id='map'></div>")[0];
-    m = new gm.Map(elemMap, options);
-    $(elemMap).appendTo(containers[0].elem);
-
-    groups = _.map(
-      _.assign({}, data.groups),
-      function (gp) {
-        var places = _.map(gp.places, function (plid) { // Replace place ids by place objects
-          return _
-            .chain(data.places)
-            .find({ id: plid })
-            .thru(function (item) {
-              var pos = new gm.LatLng(item.lat, item.lng);
-              return _.assign({
-                position: new gm.LatLng(item.lat, item.lng)
-              }, item);
-            })
-            .value();
-        });
-        return _.assign(gp, {
-          places: places,
-          latLngBounds: _.reduce( // LatLngBounds for the group
-            places,
-            function (bnds, pl) {
-              return bnds.extend(pl.position);
-            },
-            new gm.LatLngBounds()
-          ),
-          pinIcon: _.assign({}, pin, { fillColor: gp.color }),
-          dotIcon: _.assign({}, dot, { fillColor: gp.color })
-        });
-
-      }
-    );
-
-  };
-
-  var insertMap = function (id) { // Move map to the given map container + update
-    var elemMapContainer = _.find(containers, { id: id }).elem;
-
-    if (elemMapContainer) {
-      $(elemMap).detach().appendTo(elemMapContainer);
-    }
-
-    _.forEach(groups, function (gp) {
-      var isActiveGroup = gp.id === id;
-      _.forEach(gp.places, function (pl) {
-        if (pl.marker) pl.marker.setMap(null);
-        _.assign(pl, { marker: new gm.Marker({ map: m, position: pl.position, icon: (isActiveGroup ? gp.pinIcon : gp.dotIcon) }) });
-      });
-      if (isActiveGroup && gp.places.length > 0) { // For the current group (which has at least one place)
-        m.fitBounds(gp.latLngBounds); // Because settings bounds for no place sends us in the middle of the Pacific Ocean
-        m.setZoom(m.getZoom() - 1);
-      }
-    });
-  };
-
-  var bounce = function (place, times) { // place: place *object*, times: how many bounces
-    times = parseInt(times, 10) || 1;
-    place.marker.setAnimation(gm.Animation.BOUNCE);
-    place.timeout = window.setTimeout(function () {
-      place.marker.setAnimation();
-    }, times * 710); // http://stackoverflow.com/questions/7339200/bounce-a-pin-in-google-maps-once
-  };
-
-  var panTo = function (place) { // place: place *object*
-    m.panTo(place.position);
-  };
-
-  var getGroups = function () {
-    return groups;
-  };
-
-  return {
-    bounce: bounce,
-    getGroups: getGroups,
-    init: init,
-    insertMap: insertMap,
-    panTo: panTo
-  };
-
-})(
-  data,
-  _.map($("section[data-id]").find(".mapContainer:first"), function (elem) { // Ad hoc function to build the containers collection
-    return {
-      id: $(elem).closest("section").data("id"),
-      elem: elem
-    };
-  })
-);
-
-
-
