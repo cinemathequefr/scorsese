@@ -93,14 +93,19 @@ MapView.prototype.insert = function (id) { // Insert (move) map into container (
 MapView.prototype.drawMarkers = function (id) { // Draw markers for group (id)
   var map = this.map;
   var group = _.find(this.data.groups, { id: id });
+  var z;
+
+
   _.forEach(this.markers, function (mrk) {
     mrk.marker.setIcon(mrk.group.id === id ? mrk.group.icons.pin : mrk.group.icons.dot);
     mrk.marker.setVisible(true);
   });
   map.fitBounds(group.latLngBounds);
 
-  map.setZoom(map.getZoom() - 1); // Force repaint?
-  _.delay(function () { map.setZoom(map.getZoom() + 1); }, 1000);
+  z = map.getZoom();
+  map.setZoom(z - 1);
+  _.delay(function () { map.setZoom(Math.min(z, 14)); }, 1000); // Force repaint (?) + enforce max zoom level
+
 
 };
 

@@ -22,24 +22,21 @@ var Data = (function () {
       { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
       { id: 2, filmId: 2, lat: 40.72176, lng: -73.99707, name: "Volpe Bar" },
       { id: 3, filmId: 2, lat: 40.71816, lng: -73.99794, name: "Mulberry St and Hester St" },
-      { id: 4, filmId: 2, lat: 40.7181, lng: -74.0128, name: "The Bridge" },
-      { id: 5, filmId: 2, lat: 40.7193, lng: -73.99732, name: "Mulberry St" },
-      { id: 6, filmId: 2, lat: 40.72075, lng: -73.9971, name: "394 Broome St" },
-      { id: 7, filmId: 2, lat: 40.7312, lng: -74.00167, name: "323 6th Ave - Waverly Theater" },
+      { id: 4, filmId: 2, lat: 40.71810, lng: -74.01280, name: "The Bridge" },
+      { id: 5, filmId: 2, lat: 40.71930, lng: -73.99732, name: "Mulberry St" },
+      { id: 6, filmId: 2, lat: 40.72075, lng: -73.99710, name: "394 Broome St" },
+      { id: 7, filmId: 2, lat: 40.73120, lng: -74.00167, name: "323 6th Ave - Waverly Theater" },
+
       // Taxi Driver
       { id: 8, filmId: 3, lat: 40.76987, lng: -73.99031, name: "W57th Street" },
       { id: 9, filmId: 3, lat: 40.76041, lng: -73.98745, name: "8th Ave &amp; W47th St." },
-      { id: 10, filmId: 3, lat: 40.75992, lng: -73.98782, name: "737 8th Ave - Show and Tell Theater" },
-      { id: 11, filmId: 3, lat: 40.77135, lng: -73.98206, name: "Broadway &amp; W 63rd St" },
       { id: 12, filmId: 3, lat: 40.76741, lng: -73.98239, name: "8th Ave &amp; W 58th St" },
-      { id: 13, filmId: 3, lat: 40.75890, lng: -73.98513, name: "Times Square" },
-      { id: 14, filmId: 3, lat: 40.75665, lng: -73.98766, name: "Hilton Theater" },
       { id: 15, filmId: 3, lat: 40.76381, lng: -73.98294, name: "Ed Sullivan Theater" },
-      { id: 16, filmId: 3, lat: 40.74335, lng: -73.98413, name: "Park Ave S &amp; E 28th St" },
       { id: 17, filmId: 3, lat: 40.73225, lng: -73.98736, name: "204 E 13th St" },
-      { id: 18, filmId: 3, lat: 40.73201, lng: -73.98667, name: "226 E 13th St" },
-      { id: 19, filmId: 3, lat: 40.76804, lng: -73.98237, name: "Columbus Circle" },
       { id: 20, filmId: 3, lat: 40.76141, lng: -73.97469, name: "The St. Regis, 2 E 55th St" },
+      { id: 21, filmId: 3, lat: 40.75847, lng: -73.98469, name: "" },
+      { id: 22, filmId: 3, lat: 40.75657, lng: -73.99028, name: "" },
+
       // Raging Bull
       { id: 23, filmId: 4, lat: 40.81637, lng: -73.91529, name: "Gleason's Gym, 434 Westchester Ave, Bronx" },
       { id: 24, filmId: 4, lat: 40.73399, lng: -73.98891, name: "Gramercy Gym, 116 E 14th St" },
@@ -48,10 +45,12 @@ var Data = (function () {
       { id: 27, filmId: 4, lat: 40.76435, lng: -73.97189, name: "Copacabana, 10 E 60th St" },
       { id: 28, filmId: 4, lat: 40.76834, lng: -73.98820, name: "447 W 56th St" },
       { id: 29, filmId: 4, lat: 40.76138, lng: -73.98527, name: "225 W 49th St" },
+
       // La Valse des pantins
       { id: 30, filmId: 5, lat: 40.75895, lng: -73.98493, name: "Times Square" },
       { id: 31, filmId: 5, lat: 40.76207, lng: -73.9846, name: "Paramount Plaza" },
       { id: 32, filmId: 5, lat: 40.75614, lng: -73.96571, name: "335 E 53rd St" },
+
       // After Hours
       { id: 33, filmId: 6, lat: 40.74168, lng: -73.98695, name: "Metropolitan Life North Building" },
       { id: 34, filmId: 6, lat: 40.71953, lng: -74.00064, name: "Crosby St &amp; Howard St" },
@@ -61,6 +60,7 @@ var Data = (function () {
       { id: 38, filmId: 6, lat: 40.72230, lng: -73.99714, name: "Spring St" },
       { id: 39, filmId: 6, lat: 40.72376, lng: -74.00069, name: "Appartement de Tom, 128 Spring St" },
       { id: 40, filmId: 6, lat: 40.72090, lng: -74.00068, name: "Club Berlin, Broadway &amp; Grand St" },
+
       // Goodfellas
       { id: 41, filmId: 7, lat: 40.76768, lng: -73.89987, name: "Airline Diner, 69-35 Astoria Blvd N, East Elmhurst" },
       { id: 42, filmId: 7, lat: 40.77276, lng: -73.91525, name: "23-86 31st St, Long Island City" },
@@ -72,6 +72,15 @@ var Data = (function () {
       { id: 48, filmId: 7, lat: 40.72282, lng: -73.91350, name: "Goodfellas Diner, 5626 Maspeth Ave, Maspeth" },
       { id: 49, filmId: 7, lat: 40.70079, lng: -73.83235, name: "117-99 Babbage St, Richmond Hill" },
       { id: 50, filmId: 7, lat: 40.67473, lng: -73.99777, name: "Brooklyn" },
+      { id: 90, filmId: 7, lat: 40.77159, lng: -73.91503, name: "" },
+      { id: 91, filmId: 7, lat: 40.77182, lng: -73.9148, name: "" },
+      { id: 92, filmId: 7, lat: 40.77276, lng: -73.91525, name: "" },
+      { id: 93, filmId: 7, lat: 40.76435, lng: -73.97189, name: "10 E 60th St - Copacabana" },
+      { id: 94, filmId: 7, lat: 40.63063, lng: -74.03916, name: "5 80th St" },
+      { id: 95, filmId: 7, lat: 40.74024, lng: -74.00791, name: "" },
+
+
+
       // The Age of Innocence
       { id: 51, filmId: 8, lat: 40.73769, lng: -73.9867, name: "15 Gramercy Park S, New York" },
       { id: 52, filmId: 8, lat: 40.86352, lng: -73.88209, name: "Enid A. Haupt Conservatory" },
@@ -118,12 +127,12 @@ var Data = (function () {
     ],
     groups: [ // Each group is shown on a different map
       { id: 1, color: "#993", places: [93, 94, 95] },
-      { id: 2, color: "#369", places: [1, 2, 3, 4, 5, 6, 7] },
-      { id: 3, color: "#69f", places: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] },
-      { id: 4, color: "#f36", places: [23, 24, 25, 26, 27, 28, 29] },
+      { id: 2, /*color: "#369",*/ color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] },
+      { id: 3, /*color: "#69f",*/ color: "#f2ce18", places: [8, 9, 12, 15, 17, 20, 21, 22] },
+      { id: 4, /*color: "#f36",*/ color: "#666669", places: [23, 24, 25, 26, 27, 28, 29] },
       { id: 5, color: "#693", places: [30, 31, 32] },
       { id: 6, color: "#93f", places: [33, 34, 35, 36, 37, 38, 39, 40] },
-      { id: 7, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50] },
+      { id: 7, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92, 93, 94, 95] },
       { id: 8, color: "#936", places: [51, 52, 53, 54, 55, 56] },
       { id: 9, color: "#36f", places: [57, 58, 59, 60, 61, 62, 63, 64] },
       { id: 10, color: "#f36", places: [65, 66, 67, 68, 69, 70, 71, 72] },
