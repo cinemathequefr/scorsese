@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 1000px;
+      margin: 48px auto;
+    }
+
+    td, th {
+      padding: 2px;
+      border: solid 1px #000;
+      color: #222;
+      font-size: 0.938rem;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+
+
+    </style>
+  </head>
+  <body>
+    
+
+  <script src="src/js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="src/js/vendor/lodash.min.js"></script>
+  <script src="src/js/data.js"></script>
+  <script>
+  var groups = Data.groups;
+  var films = Data.films;
+  var t = "";
+
+
+  _.forEach(groups, function (group) {
+    _.forEach(group.places, function (place) {
+      // t += "<tr><td class='right'>" + place.id + "</td><td class='center'>" + place.filmId + "</td><td>" + place.name + "</td><td class='center'>" + place.lat + "</td><td class='center'>" + place.lng + "</td><td class='right'>" + (place.videoId ? "<a target='_blank' href='https://vimeo.com/" + place.videoId + "'>" + place.videoId + "</a>" : "") + "</td></tr>";
+      t += "<tr><td class='right'>" + place.id + "</td><td class='center'>" + _.find(films, { id: place.filmId}).title + "</td><td>" + place.name + "</td><td class='center'>" + place.lat + "</td><td class='center'>" + place.lng + "</td><td class='right'>" + (place.videoId ? "<a target='_blank' href='https://vimeo.com/" + place.videoId + "'>" + place.videoId + "</a>" : "") + "</td></tr>";
+    });
+  });
+
+  t = "<table><tr><th>Id</th><th>IdFilm</th><th>Name</th><th>Lat</th><th>Lng</th><th>VideoId</th></tr>" + t + "</table>";
+
+  $("body").append(t);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+  </body>
+</html>

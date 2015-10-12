@@ -145,7 +145,7 @@ var Data = (function () {
       { id: 5, color: "#666669", places: [23, 24, 25, 26, 27, 28, 29] }, // Raging Bull
       { id: 6, color: "#693", places: [30, 31, 32] }, // The King of Comedy
       { id: 7, color: "#93f", places: [33, 34, 35, 36, 37, 38, 39, 40] }, // After Hours
-      { id: 8, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92, 93, 94, 95] }, // Les Affranchis
+      { id: 8, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92] }, // Les Affranchis
       { id: 9, color: "#936", places: [51, 52, 53, 54, 55, 56] }, // Le Temps de l'innocence
       { id: 10, color: "#36f", places: [57, 58, 59, 60, 61, 62, 63, 64] }, // À tombeau ouvert
       { id: 12, color: "#f36", places: [65, 66, 67, 68, 69, 70, 71, 72] }, // Les Infiltrés
@@ -174,7 +174,8 @@ var Data = (function () {
 
   return {
     // places: self.expand().places,
-    groups: self.expand().groups
+    groups: self.expand().groups,
+    films: self.films
   };
 
 })();
