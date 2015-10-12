@@ -5,6 +5,7 @@
 
 $(function () {
   var $body = $("body");
+  var markers;
 
 
   var mapView = new MapView(
@@ -17,6 +18,32 @@ $(function () {
   mapView.init();
   // mapView.insert(1);
   // mapView.drawMarkers(1);
+
+
+
+  markers = mapView.getMarkers();
+
+  _.forEach(markers, function (mrk) {
+    google.maps.event.addListener(mrk.marker, "click", function (e) {
+      var content;
+      var id = mrk.id;
+      var name = mrk.place.name;
+      var videoId = mrk.place.videoId;
+
+      mapView.bounce(mrk.marker);
+
+      if (videoId) {
+        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + name + "</div>";
+        mapView.infoWindow(mrk.marker, content);
+      }
+    });
+  });
+
+
+
+
+
+
 
 
   var ctrl = new ScrollMagic.Controller();

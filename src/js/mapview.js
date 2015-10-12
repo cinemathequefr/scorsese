@@ -67,7 +67,7 @@ MapView.prototype.init = function () {
     _.forEach(group.places, function (place) { // Create markers collection
       self.markers.push({
         group: group,
-        // place: place,
+        place: place,
         id: place.id,
         marker: new google.maps.Marker({
           map: self.map,
@@ -94,27 +94,32 @@ MapView.prototype.drawMarkers = function (id) { // Draw markers for group (id)
   var map = this.map;
   var group = _.find(this.data.groups, { id: id });
   var z;
-
-
   _.forEach(this.markers, function (mrk) {
     mrk.marker.setIcon(mrk.group.id === id ? mrk.group.icons.pin : mrk.group.icons.dot);
     mrk.marker.setVisible(true);
   });
   map.fitBounds(group.latLngBounds);
-
   z = map.getZoom();
   map.setZoom(z - 1);
   _.delay(function () { map.setZoom(Math.min(z, 14)); }, 1000); // Force repaint (?) + enforce max zoom level
-
-
 };
 
-/*
-MapView.prototype.getData = function () {
-  return this.data;
+
+MapView.prototype.getMarkers = function () {
+  return this.markers;
 };
 
-MapView.prototype.getContainers = function () {
-  return this.containers;
+MapView.prototype.bounce = function (marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  marker.setAnimation(null);
 };
-*/
+
+
+MapView.prototype.infoWindow = function (marker, content) {
+  var infWin = new google.maps.InfoWindow();
+  infWin.setContent(content);
+  infWin.open(this.map, marker);
+
+
+}
+

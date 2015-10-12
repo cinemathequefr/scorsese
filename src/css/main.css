@@ -127,3 +127,19 @@ section {
   position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
   z-index: 1;
 }
+
+.videothumb {
+  display: block; overflow: hidden;
+  width: 200px;
+  height: 150px; line-height: 150px;
+  color: rgba(255, 255, 255, 0.85);
+  background-position: 50% 50%; background-repeat: no-repeat; background-color: #000; background-size: contain;
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.videothumb:before {
+  font-family: icons;
+  content: "\e800";
+}
