@@ -25,7 +25,7 @@ var Data = (function () {
       { id: 95, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: null },
 
       // 2 - Mean Streets (1973)
-      { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: null },
+      { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
       { id: 2, filmId: 2, lat: 40.72176, lng: -73.99707, name: "Volpe Bar", videoId: 141537816 },
       { id: 3, filmId: 2, lat: 40.71816, lng: -73.99794, name: "Mulberry St and Hester St", videoId: 141537586 },
       { id: 4, filmId: 2, lat: 40.71810, lng: -74.01280, name: "The Bridge", videoId: 141537581 },
@@ -33,15 +33,13 @@ var Data = (function () {
       { id: 6, filmId: 2, lat: 40.72075, lng: -73.99710, name: "394 Broome St", videoId: 141537582 },
       { id: 7, filmId: 2, lat: 40.73120, lng: -74.00167, name: "323 6th Ave - Waverly Theater", videoId: 141537579 },
 
-      // 3 - Taxi Driver (1976)
+      // // 3 - Taxi Driver (1976)
       { id: 8, filmId: 3, lat: 40.76987, lng: -73.99031, name: "W57th Street", videoId: 141555221 },
       { id: 9, filmId: 3, lat: 40.76041, lng: -73.98745, name: "8th Ave &amp; W47th St.", videoId: 141556259 },
-      { id: 12, filmId: 3, lat: 40.76741, lng: -73.98239, name: "8th Ave &amp; W 58th St", videoId: 141555224 },
-      { id: 15, filmId: 3, lat: 40.76381, lng: -73.98294, name: "Ed Sullivan Theater", videoId: 141555216 },
-      { id: 17, filmId: 3, lat: 40.73225, lng: -73.98736, name: "204 E 13th St", videoId: 141555225 },
-      { id: 20, filmId: 3, lat: 40.76141, lng: -73.97469, name: "The St. Regis, 2 E 55th St", videoId: 141804226 },
-      { id: 21, filmId: 3, lat: 40.75847, lng: -73.98469, name: "", videoId: null },
-      { id: 22, filmId: 3, lat: 40.75657, lng: -73.99028, name: "", videoId: null },
+      { id: 12, filmId: 3, lat: 40.75890, lng: -73.98513, name: "Times Square", videoId: 141555224 },
+      { id: 15, filmId: 3, lat: 40.74335, lng: -73.98413, name: "Park Ave S &amp; E 28th St", videoId: 141555216 },
+      { id: 17, filmId: 3, lat: 40.73202, lng: -73.98668, name: "", videoId: 141555225 },
+      { id: 20, filmId: 3, lat: 40.76741, lng: -73.98239, name: "Betsy et Travis boivent un café", videoId: 141804226 },
 
       // 4 - New York, New York (1977)
 
@@ -140,7 +138,7 @@ var Data = (function () {
     groups: [ // Each group is shown on a different map
       { id: 1, color: "#993", places: [93, 94, 95] }, // Who's That Knocking at My Door
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
-      { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20, 21, 22] }, // Taxi Driver
+      { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20] }, // Taxi Driver
       { id: 4, color: "#fff", places: [] }, // New York, New York
       { id: 5, color: "#666669", places: [23, 24, 25, 26, 27, 28, 29] }, // Raging Bull
       { id: 6, color: "#693", places: [30, 31, 32] }, // The King of Comedy

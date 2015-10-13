@@ -7,6 +7,8 @@ $(function () {
   var $body = $("body");
   var markers;
 
+  
+
 
   var mapView = new MapView(
     { groups: Data.groups },
@@ -15,25 +17,19 @@ $(function () {
     })
   );
 
-  // var infoWindow = mapView.infoWindow();
-
   mapView.init();
   // mapView.insert(1);
   // mapView.drawMarkers(1);
 
-
-
   markers = mapView.getMarkers();
 
-  _.forEach(markers, function (mrk) {
+  _.forEach(markers, function (mrk) { // Event binding on markers
     google.maps.event.addListener(mrk.marker, "click", function (e) {
       var content;
       var id = mrk.place.id;
       var name = mrk.place.name;
       var videoId = mrk.place.videoId;
-
       mapView.bounce(mrk.marker);
-
       if (videoId) {
         content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + name + "</div>";
           mapView.infoWindow().open(mrk.marker, content);
@@ -41,6 +37,12 @@ $(function () {
     });
   });
 
+  $body.on("click", "span.place", function (e) {
+    var placeId = parseInt($(e.target).data("place"));
+    if (!!placeId) {
+      google.maps.event.trigger(_.find(markers, { id: placeId }).marker, "click"); // http://stackoverflow.com/questions/2730929/
+    }
+  });
 
   var ctrl = new ScrollMagic.Controller();
 
@@ -78,6 +80,7 @@ $(function () {
 
       // Make title visible (NB: because of fixed position and z-index, all (following) splash-titles must be hidden to allow for correct map interactions)
       $(".splash .title").css({ display: (e.scrollDirection === "FORWARD" ? "block" : "none") });
+      console.log("At top", $(".splash .title").css("display"));
 
       // Place the map in the section we're entering (downwards i, upwards i - 1)
       var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
@@ -97,6 +100,7 @@ $(function () {
     .addTo(ctrl)
     .on("start", function (e) {
       $(".splash .title").css({ display: (e.scrollDirection === "FORWARD" ? "none" : "block") });
+      console.log("At bottom", $(".splash .title").css("display"));
     });
 
     if (sections[i + 1]) {

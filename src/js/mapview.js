@@ -79,7 +79,7 @@ MapView.prototype.init = function () {
       self.markers.push({
         group: group,
         place: place,
-        // id: place.id, // TODO: remove
+        id: place.id, // TODO: remove?
         marker: new google.maps.Marker({
           map: self.map,
           position: place.position,
