@@ -15,6 +15,8 @@ $(function () {
     })
   );
 
+  // var infoWindow = mapView.infoWindow();
+
   mapView.init();
   // mapView.insert(1);
   // mapView.drawMarkers(1);
@@ -26,7 +28,7 @@ $(function () {
   _.forEach(markers, function (mrk) {
     google.maps.event.addListener(mrk.marker, "click", function (e) {
       var content;
-      var id = mrk.id;
+      var id = mrk.place.id;
       var name = mrk.place.name;
       var videoId = mrk.place.videoId;
 
@@ -34,16 +36,10 @@ $(function () {
 
       if (videoId) {
         content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + name + "</div>";
-        mapView.infoWindow(mrk.marker, content);
+          mapView.infoWindow().open(mrk.marker, content);
       }
     });
   });
-
-
-
-
-
-
 
 
   var ctrl = new ScrollMagic.Controller();
@@ -85,11 +81,11 @@ $(function () {
 
       // Place the map in the section we're entering (downwards i, upwards i - 1)
       var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
-      // map.insertMap($(sections[j].elemSection).data("id"));
 
       var mapId = $(sections[j].elemMapContainer).data("id");
       mapView.insert(mapId);
       mapView.drawMarkers(mapId);
+      mapView.infoWindow().close();
 
 
     });
