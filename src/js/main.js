@@ -61,6 +61,7 @@ $(function () {
 
   _.forEach(sections, function (section, i) {
 
+
     var tween = new TimelineMax().add([
       TweenMax.to(section.elemSplash, 1, { backgroundPosition: "0% 100%", ease: Linear.easeNone }),
       TweenMax.to(section.elemOverlay, 1, { opacity: 0, ease: Power1.easeIn }),
@@ -78,9 +79,12 @@ $(function () {
     .addTo(ctrl)
     .on("start", function (e) {
 
-      // Make title visible (NB: because of fixed position and z-index, all (following) splash-titles must be hidden to allow for correct map interactions)
-      $(".splash .title").css({ display: (e.scrollDirection === "FORWARD" ? "block" : "none") });
-      console.log("At top", $(".splash .title").css("display"));
+      // Set splash title visibility (solves issue with position: fixed of the following section titles and map interaction)
+      $(".splash .title")
+      .css({ display: "none"})
+      .eq(e.scrollDirection === "FORWARD" || e.scrollDirection === "PAUSED" ? i : Math.max(i - 1, 0))
+      .css({ display: "block"});
+
 
       // Place the map in the section we're entering (downwards i, upwards i - 1)
       var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
@@ -90,17 +94,6 @@ $(function () {
       mapView.drawMarkers(mapId);
       mapView.infoWindow().close();
 
-
-    });
-
-    new ScrollMagic.Scene({ // Hide all splash titles when entering text (from top), show when leaving (from bottom)
-      triggerElement: section.elemText,
-      triggerHook: 0,
-    })
-    .addTo(ctrl)
-    .on("start", function (e) {
-      $(".splash .title").css({ display: (e.scrollDirection === "FORWARD" ? "none" : "block") });
-      console.log("At bottom", $(".splash .title").css("display"));
     });
 
     if (sections[i + 1]) {
@@ -117,12 +110,5 @@ $(function () {
       $(section.elemMapContainer).sticky(); // NB: use sticky.js to avoid issues with nested Magic Scroll pins
     }
   });
-
-
-
-
-
-
-
 
 });
