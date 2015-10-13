@@ -46,7 +46,6 @@
 
   _.forEach(groups, function (group) {
     _.forEach(group.places, function (place) {
-      // t += "<tr><td class='right'>" + place.id + "</td><td class='center'>" + place.filmId + "</td><td>" + place.name + "</td><td class='center'>" + place.lat + "</td><td class='center'>" + place.lng + "</td><td class='right'>" + (place.videoId ? "<a target='_blank' href='https://vimeo.com/" + place.videoId + "'>" + place.videoId + "</a>" : "") + "</td></tr>";
       t += "<tr><td class='right'>" + place.id + "</td><td class='center'>" + _.find(films, { id: place.filmId}).title + "</td><td>" + place.name + "</td><td class='center'>" + place.lat + "</td><td class='center'>" + place.lng + "</td><td class='right'>" + (place.videoId ? "<a target='_blank' href='https://vimeo.com/" + place.videoId + "'>" + place.videoId + "</a>" : "") + "</td></tr>";
     });
   });
