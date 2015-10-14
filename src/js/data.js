@@ -44,18 +44,18 @@ var Data = (function () {
       // 4 - New York, New York (1977)
 
       // 5 - Raging Bull (1980)
-      { id: 23, filmId: 5, lat: 40.81637, lng: -73.91529, name: "Gleason's Gym, 434 Westchester Ave, Bronx", videoId: null },
-      { id: 24, filmId: 5, lat: 40.73399, lng: -73.98891, name: "Gramercy Gym, 116 E 14th St", videoId: null },
-      { id: 25, filmId: 5, lat: 40.72958, lng: -74.00547, name: "Tony Dapolito Recreation Center, 1 Clarkson St", videoId: null },
-      { id: 26, filmId: 5, lat: 40.73176, lng: -73.98913, name: "Webster Hall, 125 E 11th St", videoId: null },
-      { id: 27, filmId: 5, lat: 40.76435, lng: -73.97189, name: "Copacabana, 10 E 60th St", videoId: null },
-      { id: 28, filmId: 5, lat: 40.76834, lng: -73.98820, name: "447 W 56th St", videoId: null },
-      { id: 29, filmId: 5, lat: 40.76138, lng: -73.98527, name: "225 W 49th St", videoId: null },
+      { id: 24, filmId: 5, lat: 40.73399, lng: -73.98891, name: "Gramercy Gym, 116 E 14th St", videoId: 142231219 },
+      { id: 25, filmId: 5, lat: 40.72958, lng: -74.00547, name: "Tony Dapolito Recreation Center, 1 Clarkson St", videoId: 142231257 },
+      { id: 26, filmId: 5, lat: 40.73176, lng: -73.98913, name: "Webster Hall, 125 E 11th St", videoId: 142231279 },
+      { id: 27, filmId: 5, lat: 40.76435, lng: -73.97189, name: "Copacabana, 10 E 60th St", videoId: 142231304 },
+      { id: 28, filmId: 5, lat: 40.76834, lng: -73.98820, name: "447 W 56th St", videoId: 142231323 },
+      { id: 29, filmId: 5, lat: 40.76138, lng: -73.98527, name: "225 W 49th St", videoId: 142231342 },
+      { id: 103, filmId: 5, lat: 40.72307, lng: -73.99385, name: "232 Elizabeth St - Scène du mariage", videoId: 142257454 },
 
       // 6 - La Valse des pantins (1983)
-      { id: 30, filmId: 6, lat: 40.75895, lng: -73.98493, name: "Times Square", videoId: null },
-      { id: 31, filmId: 6, lat: 40.76207, lng: -73.9846, name: "Paramount Plaza", videoId: null },
-      { id: 32, filmId: 6, lat: 40.75614, lng: -73.96571, name: "335 E 53rd St", videoId: null },
+      { id: 30, filmId: 6, lat: 40.75895, lng: -73.98493, name: "Times Square", videoId: 142231363 },
+      { id: 31, filmId: 6, lat: 40.76207, lng: -73.9846, name: "Paramount Plaza", videoId: 142231373 },
+      { id: 32, filmId: 6, lat: 40.75614, lng: -73.96571, name: "335 E 53rd St", videoId: 142231386 },
 
       // 7 - After Hours (1985)
       { id: 33, filmId: 7, lat: 40.74168, lng: -73.98695, name: "Metropolitan Life North Building", videoId: null },
@@ -140,8 +140,8 @@ var Data = (function () {
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
       { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20] }, // Taxi Driver
       { id: 4, color: "#fff", places: [] }, // New York, New York
-      { id: 5, color: "#666669", places: [23, 24, 25, 26, 27, 28, 29] }, // Raging Bull
-      { id: 6, color: "#693", places: [30, 31, 32] }, // The King of Comedy
+      { id: 5, color: "#e51300", places: [24, 25, 26, 27, 28, 29, 103] }, // Raging Bull
+      { id: 6, color: "#74b336", places: [30, 31, 32] }, // The King of Comedy
       { id: 7, color: "#93f", places: [33, 34, 35, 36, 37, 38, 39, 40] }, // After Hours
       { id: 8, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92] }, // Les Affranchis
       { id: 9, color: "#936", places: [51, 52, 53, 54, 55, 56] }, // Le Temps de l'innocence

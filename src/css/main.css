@@ -107,6 +107,11 @@ section span.place {
 
 section[data-id='2'] span.place { border-color: #4821d9; color: #4821d9; }
 section[data-id='3'] span.place { border-color: #ccad14; color: #ccad14; } /* From #f2ce18; */
+section[data-id='5'] span.place { border-color: #e51300; color: #e51300; }
+section[data-id='6'] span.place { border-color: #74b336; color: #74b336; }
+
+
+
 
 
 .mapContainer {
