@@ -12,7 +12,6 @@ var Data = (function () {
       { id: 9, title: "Le Temps de l'innocence" },
       { id: 10, title: "À tombeau ouvert" },
       { id: 11, title: "Gangs of New York" },
-      { id: 12, title: "Les Infiltrés" },
       { id: 13, title: "Le Loup de Wall Street" }
     ],
 
@@ -20,9 +19,9 @@ var Data = (function () {
 
     places: [
       // 1 - Who's That Knocking at My Door (1967)
-      { id: 93, filmId: 1, lat: 40.64403, lng: -74.07219, name: "Staten Island Ferries", videoId: null },
-      { id: 94, filmId: 1, lat: 42.10345, lng: -73.54992, name: "Copake", videoId: null },
-      { id: 95, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: null },
+      { id: 104, filmId: 1, lat: 40.64403, lng: -74.07219, name: "Staten Island Ferries", videoId: null },
+      { id: 105, filmId: 1, lat: 42.10345, lng: -73.54992, name: "Copake", videoId: null },
+      { id: 106, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: null },
 
       // 2 - Mean Streets (1973)
       { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
@@ -58,62 +57,47 @@ var Data = (function () {
       { id: 32, filmId: 6, lat: 40.75614, lng: -73.96571, name: "335 E 53rd St", videoId: 142231386 },
 
       // 7 - After Hours (1985)
-      { id: 33, filmId: 7, lat: 40.74168, lng: -73.98695, name: "Metropolitan Life North Building", videoId: null },
-      { id: 34, filmId: 7, lat: 40.71953, lng: -74.00064, name: "Crosby St &amp; Howard St", videoId: null },
-      { id: 35, filmId: 7, lat: 40.75768, lng: -74.00059, name: "11th Ave &amp; W 37th St", videoId: null },
-      { id: 36, filmId: 7, lat: 40.72589, lng: -74.00838, name: "Terminal Bar, Spring St &amp; Renwick St", videoId: null },
-      { id: 37, filmId: 7, lat: 40.72806, lng: -74.00720, name: "Hudson St", videoId: null },
-      { id: 38, filmId: 7, lat: 40.72230, lng: -73.99714, name: "Spring St", videoId: null },
-      { id: 39, filmId: 7, lat: 40.72376, lng: -74.00069, name: "Appartement de Tom, 128 Spring St", videoId: null },
-      { id: 40, filmId: 7, lat: 40.72090, lng: -74.00068, name: "Club Berlin, Broadway &amp; Grand St", videoId: null },
+      { id: 33, filmId: 7, lat: 40.74168, lng: -73.98695, name: "Metropolitan Life North Building", videoId: 142231397 },
+      { id: 36, filmId: 7, lat: 40.72589, lng: -74.00838, name: "Terminal Bar, Spring St &amp; Renwick St", videoId: 142231427 },
+      { id: 37, filmId: 7, lat: 40.72806, lng: -74.00720, name: "Hudson St", videoId: 142231454 },
+      { id: 38, filmId: 7, lat: 40.72230, lng: -73.99714, name: "Spring St", videoId: 142231471 },
+      { id: 40, filmId: 7, lat: 40.72090, lng: -74.00068, name: "Club Berlin, Broadway &amp; Grand St", videoId: 142231483 },
 
       // 8 - Les Affranchis (1990)
-      { id: 41, filmId: 8, lat: 40.76768, lng: -73.89987, name: "Airline Diner, 69-35 Astoria Blvd N, East Elmhurst", videoId: null },
-      { id: 42, filmId: 8, lat: 40.77276, lng: -73.91525, name: "23-86 31st St, Long Island City", videoId: null },
-      { id: 43, filmId: 8, lat: 40.70055, lng: -73.83287, name: "117-11 Hillside Ave, Jamaica", videoId: null },
-      { id: 44, filmId: 8, lat: 40.95372, lng: -73.77996, name: "19 Alfred Ln, New Rochelle", videoId: null },
-      { id: 45, filmId: 8, lat: 40.72951, lng: -73.88939, name: "73-20 Grand Ave, Maspeth", videoId: null },
-      { id: 46, filmId: 8, lat: 40.72126, lng: -73.84248, name: "109-20 71st Rd, Forest Hills", videoId: null },
-      { id: 47, filmId: 8, lat: 40.68979, lng: -73.86367, name: "87-48 78th St, Jamaica", videoId: null },
-      { id: 48, filmId: 8, lat: 40.72282, lng: -73.91350, name: "Goodfellas Diner, 5626 Maspeth Ave, Maspeth", videoId: null },
-      { id: 49, filmId: 8, lat: 40.70079, lng: -73.83235, name: "117-99 Babbage St, Richmond Hill", videoId: null },
-      { id: 50, filmId: 8, lat: 40.67473, lng: -73.99777, name: "Brooklyn", videoId: null },
-      { id: 90, filmId: 8, lat: 40.77159, lng: -73.91503, name: "", videoId: null },
-      { id: 91, filmId: 8, lat: 40.77182, lng: -73.9148, name: "", videoId: null },
-      { id: 92, filmId: 8, lat: 40.77276, lng: -73.91525, name: "", videoId: null },
-      { id: 93, filmId: 8, lat: 40.76435, lng: -73.97189, name: "10 E 60th St - Copacabana", videoId: null },
-      { id: 94, filmId: 8, lat: 40.63063, lng: -74.03916, name: "5 80th St", videoId: null },
-      { id: 95, filmId: 8, lat: 40.74024, lng: -74.00791, name: "", videoId: null },
+      { id: 41, filmId: 8, lat: 40.76768, lng: -73.89987, name: "Airline Diner, 69-35 Astoria Blvd N, East Elmhurst", videoId: 142231514 },
+      { id: 42, filmId: 8, lat: 40.77276, lng: -73.91525, name: "23-86 31st St, Long Island City", videoId: 142231530 },
+      { id: 43, filmId: 8, lat: 40.70055, lng: -73.83287, name: "117-11 Hillside Ave, Jamaica", videoId: 142231575 },
+      { id: 44, filmId: 8, lat: 40.95372, lng: -73.77996, name: "19 Alfred Ln, New Rochelle", videoId: 142231586 },
+      { id: 45, filmId: 8, lat: 40.72951, lng: -73.88939, name: "73-20 Grand Ave, Maspeth", videoId: 142231616 },
+      { id: 46, filmId: 8, lat: 40.72126, lng: -73.84248, name: "109-20 71st Rd, Forest Hills", videoId: 142231632 },
+      { id: 47, filmId: 8, lat: 40.68979, lng: -73.86367, name: "87-48 78th St, Jamaica", videoId: 142231645 },
+      { id: 48, filmId: 8, lat: 40.72282, lng: -73.91350, name: "Goodfellas Diner, 5626 Maspeth Ave, Maspeth", videoId: 142231662 },
+      { id: 49, filmId: 8, lat: 40.70079, lng: -73.83235, name: "117-99 Babbage St, Richmond Hill", videoId: 142231676 },
+      { id: 50, filmId: 8, lat: 40.67473, lng: -73.99777, name: "Brooklyn", videoId: 142231686 },
+      { id: 90, filmId: 8, lat: 40.77159, lng: -73.91503, name: "", videoId: 142231912 },
+      { id: 91, filmId: 8, lat: 40.77182, lng: -73.9148, name: "", videoId: 142231927 },
+      { id: 92, filmId: 8, lat: 40.77276, lng: -73.91525, name: "", videoId: 142231937 },
+      { id: 93, filmId: 8, lat: 40.76435, lng: -73.97189, name: "10 E 60th St - Copacabana", videoId: 142231946 },
+      { id: 94, filmId: 8, lat: 40.63063, lng: -74.03916, name: "5 80th St", videoId: 142231968 },
+      { id: 95, filmId: 8, lat: 40.74024, lng: -74.00791, name: "", videoId: 142231982 },
 
       // 9 - Le Temps de l'innocence (1993)
-      { id: 51, filmId: 9, lat: 40.73769, lng: -73.9867, name: "15 Gramercy Park S, New York", videoId: null },
-      { id: 52, filmId: 9, lat: 40.86352, lng: -73.88209, name: "Enid A. Haupt Conservatory", videoId: null },
-      { id: 53, filmId: 9, lat: 40.71435, lng: -74.00047, name: "Five Points", videoId: null },
-      { id: 54, filmId: 9, lat: 40.70608, lng: -73.99686, name: "Brooklyn Bridge", videoId: null },
-      { id: 55, filmId: 9, lat: 40.74844, lng: -73.98565, name: "Empire State Building", videoId: null },
-      { id: 56, filmId: 9, lat: 40.71902, lng: -73.99649, name: "Mott Street", videoId: null },
+      { id: 51, filmId: 9, lat: 40.73769, lng: -73.9867, name: "Gramercy Park", videoId: 142364730 },
+      { id: 52, filmId: 9, lat: 40.86352, lng: -73.88209, name: "Enid A. Haupt Conservatory", videoId: 142364864 },
+      { id: 53, filmId: 9, lat: 40.71435, lng: -74.00047, name: "Five Points", videoId: 142364896 },
+      { id: 107, filmId: 9, lat: 40.78122, lng: -73.96665, name: "Central Park - Mrs. Mingott's House", videoId: 142364924 },
 
       // 10 - À tombeau ouvert (1999)
-      { id: 57, filmId: 10, lat: 40.75854, lng: -73.98883, name: "Smith's Bar, 8th Ave & W 44th St", videoId: null },
-      { id: 58, filmId: 10, lat: 40.76839, lng: -73.99281, name: "11th Ave & W 54th St", videoId: null },
-      { id: 59, filmId: 10, lat: 40.75656, lng: -73.99027, name: "8th Ave & W 41st St", videoId: null },
-      { id: 60, filmId: 10, lat: 40.73357, lng: -74.00274, name: "Greenwich Village", videoId: null },
-      { id: 61, filmId: 10, lat: 40.76375, lng: -73.99181, name: "Hell's Kitchen", videoId: null },
-      { id: 62, filmId: 10, lat: 40.75493, lng: -73.98401, name: "Midtown", videoId: null },
-      { id: 63, filmId: 10, lat: 40.71955, lng: -73.98674, name: "Norfolk Street", videoId: null },
-      { id: 64, filmId: 10, lat: 40.73855, lng: -73.97540, name: "Bellevue Hospital Center", videoId: null },
+      { id: 61, filmId: 10, lat: 40.76375, lng: -73.99181, name: "Hell's Kitchen", videoId: 142364269 },
+      { id: 64, filmId: 10, lat: 40.73855, lng: -73.97540, name: "Bellevue Hospital Center", videoId: 142262401 },
+      { id: 108, filmId: 10, lat: 40.76607, lng: -73.99751, name: "", videoId: 142258382 },
+      { id: 109, filmId: 10, lat: 40.76402, lng: -73.99215, name: "", videoId: 142260878 },
 
       // 11 - Gangs of New York (2002)
-
-      // 12 - Les Infiltrés (2006)
-      { id: 65, filmId: 12, lat: 40.73801, lng: -73.99531, name: "Church of St. Francis Xavier", videoId: null },
-      { id: 66, filmId: 12, lat: 40.80522, lng: -73.79151, name: "Maritime Industry Museum at Fort Schuyler", videoId: null },
-      { id: 67, filmId: 12, lat: 40.65004, lng: -73.99181, name: "Green-Wood Cemetery", videoId: null },
-      { id: 68, filmId: 12, lat: 40.64190, lng: -74.01692, name: "Irish Haven Bar", videoId: null },
-      { id: 69, filmId: 12, lat: 40.76035, lng: -73.98896, name: "Barbetta", videoId: null },
-      { id: 70, filmId: 12, lat: 40.59434, lng: -73.92995, name: "Tamaqua Bar & Marina", videoId: null },
-      { id: 71, filmId: 12, lat: 40.68422, lng: -74.00183, name: "Ferdinando's Focacceria", videoId: null },
-      { id: 72, filmId: 12, lat: 40.59993, lng: -73.91439, name: "Marine Park Golf Course", videoId: null },
+      { id: 100, filmId: 11, lat: 40.71435, lng: -74.00047, name: "", videoId: 142272316 },
+      { id: 101, filmId: 11, lat: 40.70423, lng: -73.99276, name: "", videoId: 142272381 },
+      { id: 102, filmId: 11, lat: 40.71968, lng: -73.99717, name: "", videoId: 142272454 },
+      { id: 110, filmId: 11, lat: 40.7154, lng: -74.00002, name: "", videoId: 142272489 },
 
       // 13 - Le Loup de Wall Street (2013)
       { id: 73, filmId: 13, lat: 40.76021, lng: -73.97677, name: "666 5th Ave", videoId: 140303118 },
@@ -136,17 +120,17 @@ var Data = (function () {
 
     ],
     groups: [ // Each group is shown on a different map
-      { id: 1, color: "#993", places: [93, 94, 95] }, // Who's That Knocking at My Door
+      { id: 1, color: "#993", places: [104, 105, 106] }, // Who's That Knocking at My Door
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
       { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20] }, // Taxi Driver
       { id: 4, color: "#fff", places: [] }, // New York, New York
       { id: 5, color: "#e51300", places: [24, 25, 26, 27, 28, 29, 103] }, // Raging Bull
       { id: 6, color: "#74b336", places: [30, 31, 32] }, // The King of Comedy
-      { id: 7, color: "#93f", places: [33, 34, 35, 36, 37, 38, 39, 40] }, // After Hours
-      { id: 8, color: "#f93", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92] }, // Les Affranchis
-      { id: 9, color: "#936", places: [51, 52, 53, 54, 55, 56] }, // Le Temps de l'innocence
-      { id: 10, color: "#36f", places: [57, 58, 59, 60, 61, 62, 63, 64] }, // À tombeau ouvert
-      { id: 12, color: "#f36", places: [65, 66, 67, 68, 69, 70, 71, 72] }, // Les Infiltrés
+      { id: 7, color: "#93f", places: [33, 36, 37, 38, 40] }, // After Hours
+      { id: 8, color: "#b35995", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92, 93, 94, 95] }, // Les Affranchis
+      { id: 9, color: "#bf8f4c", places: [51, 52, 53, 107] }, // Le Temps de l'innocence
+      { id: 10, color: "#36f", places: [61, 64, 108, 109] }, // À tombeau ouvert
+      { id: 11, color: "#f36", places: [100, 101, 102, 110] }, // Gangs of New York
       { id: 13, color: "#f69", places: [73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89] } // Le Loup de Wall Street
     ],
 
