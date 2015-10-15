@@ -6,7 +6,7 @@ var MapView = function (data, containers) {
     containers: containers,
     elemMap: null,
     map: null,
-    options: {
+    mapOptions: {
       center: new google.maps.LatLng(40.766300, -73.977734), // TODO: remove + set center on init
       disableDefaultUI: true,
       scrollwheel: false,
@@ -16,6 +16,9 @@ var MapView = function (data, containers) {
       ],
       zoom: 13,
       zoomControl: true
+    },
+    infoWindowOptions: {
+      maxWidth: 480
     },
     baseIcons: {
       pin: {
@@ -46,11 +49,11 @@ var MapView = function (data, containers) {
 MapView.prototype.init = function () {
   var self = this;
   this.elemMap = $("<div id='map'></div>")[0];
-  this.map = new google.maps.Map(this.elemMap, this.options);
+  this.map = new google.maps.Map(this.elemMap, this.mapOptions);
   $(this.elemMap).appendTo(this.containers[0]); // Insert the map in the first container
 
   // Instantiate (singleton) InfoWindow
-  this._infoWindow = new google.maps.InfoWindow();
+  this._infoWindow = new google.maps.InfoWindow(this.infoWindowOptions);
   google.maps.event.addListener(this.map, "click", function () {
     self.infoWindow().close();
   });
