@@ -17,12 +17,13 @@ $(function () {
     google.maps.event.addListener(mrk.marker, "click", function (e) {
       var content;
       var id = mrk.place.id;
-      var name = mrk.place.name;
+      var name = mrk.place.name;  
       var filmTitle = mrk.place.filmTitle;
       var videoId = mrk.place.videoId;
+      var color = mrk.group.color.replace(/#/gi, "");
       mapView.bounce(mrk.marker);
       if (videoId) {
-        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " - " + name + "</div>";
+        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0&amp;color=" + color + "&amp;autoplay=1' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " - " + name + "</div>";
           mapView.infoWindow().open(mrk.marker, content);
       }
     });
@@ -122,6 +123,7 @@ $(function () {
     if (section.elemMapContainer) {
       $(section.elemMapContainer).sticky(); // Pin the map (sticky.js is used to avoid issues with nested Magic Scroll pins)
     }
+    
   });
 
 });

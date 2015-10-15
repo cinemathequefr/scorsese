@@ -34,7 +34,7 @@ var MapView = function (data, containers) {
       dot: {
         path: "M-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0",
         fillColor: "#ddd",
-        fillOpacity: 0.5,
+        fillOpacity: 0.75,
         scale: 0.75,
         strokeOpacity: 0.5,
         strokeColor: "#000",
@@ -137,6 +137,7 @@ MapView.prototype.infoWindow = function () {
       self._infoWindow.open(self.map, marker);
     },
     close: function () {
+      self._infoWindow.setContent(null); // NB: Make sure that the content is removed (?)
       self._infoWindow.close();
     }
     /*

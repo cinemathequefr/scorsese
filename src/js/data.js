@@ -19,9 +19,9 @@ var Data = (function () {
 
     places: [
       // 1 - Who's That Knocking at My Door (1967)
-      { id: 104, filmId: 1, lat: 40.64403, lng: -74.07219, name: "Staten Island Ferries", videoId: null },
-      { id: 105, filmId: 1, lat: 42.10345, lng: -73.54992, name: "Copake", videoId: null },
-      { id: 106, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: null },
+      { id: 104, filmId: 1, lat: 40.64403, lng: -74.07219, name: "Staten Island Ferries", videoId: 142512156 },
+      { id: 106, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: 142512229 },
+      { id: 115, filmId: 1, lat: 40.72326, lng: -73.99426, name: "Mario le boucher", videoId: 142512291 },
 
       // 2 - Mean Streets (1973)
       { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
@@ -36,7 +36,7 @@ var Data = (function () {
       { id: 8, filmId: 3, lat: 40.76987, lng: -73.99031, name: "W57th Street", videoId: 141555221 },
       { id: 9, filmId: 3, lat: 40.76041, lng: -73.98745, name: "8th Ave &amp; W47th St.", videoId: 141556259 },
       { id: 12, filmId: 3, lat: 40.75890, lng: -73.98513, name: "Times Square", videoId: 141555224 },
-      { id: 15, filmId: 3, lat: 40.74335, lng: -73.98413, name: "Park Ave S &amp; E 28th St", videoId: 141555216 },
+      // { id: 15, filmId: 3, lat: 40.74335, lng: -73.98413, name: "Park Ave S &amp; E 28th St", videoId: 141555216 },
       { id: 17, filmId: 3, lat: 40.73202, lng: -73.98668, name: "", videoId: 141555225 },
       { id: 20, filmId: 3, lat: 40.76741, lng: -73.98239, name: "Betsy et Travis boivent un café", videoId: 141804226 },
 
@@ -117,21 +117,20 @@ var Data = (function () {
       // { id: 87, filmId: 13, lat: 40.96904, lng: -73.95493, name: "Closter Plaza, 71 Vervalen Street, Closter", videoId: 140303426 },
       { id: 88, filmId: 13, lat: 40.98562, lng: -73.70661, name: "Willow Ridge Country Club, 123 North Street, Harrison", videoId: 140303449 },
       { id: 89, filmId: 13, lat: 40.75482, lng: -74.00706, name: "West 30th Street Heliport, West 30th Street at 12th Avenue / Hudson River Greenway, Chelsea", videoId: 140303465 }
-
     ],
     groups: [ // Each group is shown on a different map
-      { id: 1, color: "#993", places: [104, 105, 106] }, // Who's That Knocking at My Door
+      { id: 1, color: "#999933", places: [104, 106, 115] }, // Who's That Knocking at My Door
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
-      { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20] }, // Taxi Driver
-      // { id: 4, color: "#fff", places: [] }, // New York, New York
+      { id: 3, color: "#f2ce18", places: [8, 9, 12, 17, 20] }, // Taxi Driver
+      // { id: 4, color: "#ffffff", places: [] }, // New York, New York
       { id: 5, color: "#e51300", places: [24, 25, 26, 27, 28, 29, 103] }, // Raging Bull
       { id: 6, color: "#74b336", places: [30, 31, 32] }, // The King of Comedy
-      { id: 7, color: "#93f", places: [33, 36, 37, 38, 40] }, // After Hours
+      { id: 7, color: "#9933ff", places: [33, 36, 37, 38, 40] }, // After Hours
       { id: 8, color: "#b35995", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92, 93, 94, 95] }, // Les Affranchis
       { id: 9, color: "#bf8f4c", places: [51, 52, 53, 107] }, // Le Temps de l'innocence
-      { id: 10, color: "#36f", places: [61, 64, 108, 109] }, // À tombeau ouvert
-      { id: 11, color: "#f36", places: [100, 101, 102, 110] }, // Gangs of New York
-      { id: 13, color: "#36c", places: [73, 74, 75, 77, 78, 80, 81, 82, 83, 84, 86, 88, 89] } // Le Loup de Wall Street
+      { id: 10, color: "#3366ff", places: [61, 64, 108, 109] }, // À tombeau ouvert
+      { id: 11, color: "#ff3366", places: [100, 101, 102, 110] }, // Gangs of New York
+      { id: 13, color: "#3366cc", places: [73, 74, 75, 77, 78, 80, 81, 82, 83, 84, 86, 88, 89] } // Le Loup de Wall Street
     ],
 
     expand: function () {
