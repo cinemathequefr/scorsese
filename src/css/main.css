@@ -13,6 +13,45 @@ section {
   z-index: 1;
 }
 
+.quote {
+  font-family: Source Sans Pro; font-weight: 300; font-size: 2.5rem;
+  line-height: 1.4;
+}
+
+
+
+
+.intro {
+  position: relative;
+  height: 100vh;
+  background-color: #000; color: #fff;
+  /*padding-top: 50%;*/
+}
+
+
+.intro h1 {
+  display: block; position: fixed;
+  top: 50vh;
+  margin: 0; padding: 0;
+  font-family: Aldrich; font-size: 7rem; font-weight: 700;
+  line-height: 6.5rem;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+
+.intro .quote {
+  display: block; position: absolute;
+  top: 50vh;
+  font-size: 1.75rem;
+  transform: translateY(-50%);
+}
+
+
+
+
+
 .row {
   display: block; position: relative;
   width: 900px;
@@ -22,6 +61,8 @@ section {
 .screen {
   height: 100vh;
 }
+
+
 
 .splash {
   position: relative; overflow: hidden;
@@ -44,14 +85,12 @@ section {
   top: 50%;
   width: 100%;
   color: #fff;
-  font-family: Source Sans Pro; font-weight: 300; font-size: 2.5rem;
-  line-height: 1.4;
   text-align: center;
   transform: translateY(-50%);
 }
 
-.quote:before { content: "«";}
-.quote:after { content: "»";}
+.splash .quote:before { content: "«";}
+.splash .quote:after { content: "»";}
 
 .splash .title {
   display: block; position: fixed;

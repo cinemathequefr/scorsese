@@ -4,7 +4,7 @@ var Data = (function () {
       { id: 1, title: "Who's That Knocking at My Door" },
       { id: 2, title: "Mean Streets" },
       { id: 3, title: "Taxi Driver" },
-      { id: 4, title: "New York, New York" },
+      // { id: 4, title: "New York, New York" },
       { id: 5, title: "Raging Bull" },
       { id: 6, title: "La Valse des pantins" },
       { id: 7, title: "After Hours" },
@@ -123,7 +123,7 @@ var Data = (function () {
       { id: 1, color: "#993", places: [104, 105, 106] }, // Who's That Knocking at My Door
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
       { id: 3, color: "#f2ce18", places: [8, 9, 12, 15, 17, 20] }, // Taxi Driver
-      { id: 4, color: "#fff", places: [] }, // New York, New York
+      // { id: 4, color: "#fff", places: [] }, // New York, New York
       { id: 5, color: "#e51300", places: [24, 25, 26, 27, 28, 29, 103] }, // Raging Bull
       { id: 6, color: "#74b336", places: [30, 31, 32] }, // The King of Comedy
       { id: 7, color: "#93f", places: [33, 36, 37, 38, 40] }, // After Hours

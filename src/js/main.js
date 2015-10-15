@@ -37,6 +37,31 @@ $(function () {
 
   ctrl = new ScrollMagic.Controller();
 
+
+  var elemIntro = document.querySelector(".intro");
+  var elemIntroQuote = elemIntro.querySelector(".quote");
+  var elemIntroTitle = elemIntro.querySelector("h1");
+
+  // Intro screen
+  new ScrollMagic.Scene({
+    triggerElement: elemIntro,
+    triggerHook: 0,
+    duration: "200%"
+  })
+  .setPin(elemIntro)
+  .setTween(new TimelineMax().add([
+    TweenMax.to(elemIntroQuote, 1, { top: 0, ease: Linear.easeNone }),
+    TweenMax.to(elemIntroQuote, 1, { opacity: 0, ease: Power1.easeIn }),
+    TweenMax.to(elemIntro, 1, { backgroundColor: "#999", ease: Power1.easeIn }),
+    TweenMax.to(elemIntroTitle, 1, { opacity: 1, ease: Linear.easeNone })
+  ]))
+  // .addIndicators()
+  .addTo(ctrl);
+
+
+
+
+
   sections = _($("section")).map(function (section, i) {
     return {
       id: $(section).data("id"),
@@ -49,6 +74,7 @@ $(function () {
       elemMapContainer: section.querySelector(".mapContainer")
     };
   }).value();
+
 
   _.forEach(sections, function (section, i) {
     var tween = new TimelineMax().add([
