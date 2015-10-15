@@ -143,7 +143,8 @@ var Data = (function () {
               {}, group,
               {
                 places: _.map(group.places, function (id) {
-                  return _.find(self.places, { id: id }); 
+                  var place = _.find(self.places, { id: id });
+                  return _.assign(place, { filmTitle: _.find(self.films, { id: place.filmId }).title }); // Also adds place.filmTitle
                 })
               }
             );

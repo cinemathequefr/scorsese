@@ -1,14 +1,7 @@
-
-
-
-
-
 $(function () {
-  var $body = $("body");
   var markers;
-
-  
-
+  var sections;
+  var ctrl;
 
   var mapView = new MapView(
     { groups: Data.groups },
@@ -18,9 +11,6 @@ $(function () {
   );
 
   mapView.init();
-  // mapView.insert(1);
-  // mapView.drawMarkers(1);
-
   markers = mapView.getMarkers();
 
   _.forEach(markers, function (mrk) { // Event binding on markers
@@ -28,25 +18,26 @@ $(function () {
       var content;
       var id = mrk.place.id;
       var name = mrk.place.name;
+      var filmTitle = mrk.place.filmTitle;
       var videoId = mrk.place.videoId;
       mapView.bounce(mrk.marker);
       if (videoId) {
-        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + name + "</div>";
+        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " - " + name + "</div>";
           mapView.infoWindow().open(mrk.marker, content);
       }
     });
   });
 
-  $body.on("click", "span.place", function (e) {
+  $("body").on("click", "span.place", function (e) {
     var placeId = parseInt($(e.target).data("place"));
     if (!!placeId) {
       google.maps.event.trigger(_.find(markers, { id: placeId }).marker, "click"); // http://stackoverflow.com/questions/2730929/
     }
   });
 
-  var ctrl = new ScrollMagic.Controller();
+  ctrl = new ScrollMagic.Controller();
 
-  var sections = _($("section")).map(function (section, i) {
+  sections = _($("section")).map(function (section, i) {
     return {
       id: $(section).data("id"),
       elemSection: section,
@@ -60,8 +51,6 @@ $(function () {
   }).value();
 
   _.forEach(sections, function (section, i) {
-
-
     var tween = new TimelineMax().add([
       TweenMax.to(section.elemSplash, 1, { backgroundPosition: "0% 100%", ease: Linear.easeNone }),
       TweenMax.to(section.elemOverlay, 1, { opacity: 0, ease: Power1.easeIn }),
@@ -78,6 +67,7 @@ $(function () {
     .setTween(tween)
     .addTo(ctrl)
     .on("start", function (e) {
+      var mapId, j;
 
       // Set splash title visibility (solves issue with position: fixed of the following section titles and map interaction)
       $(".splash .title")
@@ -85,15 +75,12 @@ $(function () {
       .eq(e.scrollDirection === "FORWARD" || e.scrollDirection === "PAUSED" ? i : Math.max(i - 1, 0))
       .css({ display: "block"});
 
-
       // Place the map in the section we're entering (downwards i, upwards i - 1)
-      var j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
-
-      var mapId = $(sections[j].elemMapContainer).data("id");
+      j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
+      mapId = $(sections[j].elemMapContainer).data("id");
       mapView.insert(mapId);
       mapView.drawMarkers(mapId);
       mapView.infoWindow().close();
-
     });
 
     if (sections[i + 1]) {
@@ -107,7 +94,7 @@ $(function () {
     }
 
     if (section.elemMapContainer) {
-      $(section.elemMapContainer).sticky(); // NB: use sticky.js to avoid issues with nested Magic Scroll pins
+      $(section.elemMapContainer).sticky(); // Pin the map (sticky.js is used to avoid issues with nested Magic Scroll pins)
     }
   });
 
