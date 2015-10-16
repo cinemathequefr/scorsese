@@ -3,6 +3,7 @@ html, body {
   position: relative;
   height: 100%;
   margin: 0;
+  font-family: Source Sans Pro; font-weight: 400;
 }
 
 section {
@@ -52,11 +53,24 @@ section.intro .introBackground {
 section.intro .introText {
   display: block; position: absolute;
   top: 50vh;
-  font-size: 1.75rem;
+  font-size: 1.75rem; font-weight: 300;
   transform: translateY(-50%);
 }
 
 
+
+section.outro {
+  background-color: #000;
+  padding-bottom: 30vh;
+}
+
+section.outro .outroText {
+  width: 700px;
+  margin: 15vh auto;
+  color: #eee;
+  font-size: 18px; font-weight: 300;
+  line-height: 1.75;
+}
 
 
 
@@ -125,14 +139,14 @@ section.chapter .text {
 }
 
 section.chapter .text:last-child {
-  padding-bottom: 35vh;
+  padding-bottom: 15vh;
 }
 
 section.chapter .text p {
-  width: 600px;
+  width: 700px;
   margin-left: auto; margin-right: auto;
   color: #333;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -142,6 +156,9 @@ section.chapter span.place {
   transition: 0.25s;
 }
 
+
+
+section[data-id='1'] span.place { border-color: #999933; color: #999933; }
 section[data-id='2'] span.place { border-color: #4821d9; color: #4821d9; }
 section[data-id='3'] span.place { border-color: #ccad14; color: #ccad14; } /* From #f2ce18; */
 section[data-id='5'] span.place { border-color: #e51300; color: #e51300; }
@@ -160,7 +177,7 @@ section[data-id='13'] span.place { border-color: #36c; color: #36c; }
 
 .mapContainer {
   display: block; position: relative;
-  width: 100%; height: 55vh;
+  width: 100%; min-height: 400px; height: 45vh;
   background-color: #fff; margin-bottom-bottom: 4px;
   z-index: 2;
 }
@@ -180,3 +197,13 @@ section[data-id='13'] span.place { border-color: #36c; color: #36c; }
   position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
   z-index: 1;
 }
+
+/*
+a.logocf {
+  display: block; position: fixed;
+  top: 6px; right: 6px;
+  width: 110px; height: 50px;
+  outline: none; color: inherit; text-decoration: none;
+  z-index: 500;
+}
+*/

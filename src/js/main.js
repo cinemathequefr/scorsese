@@ -38,28 +38,6 @@ $(function () {
 
   ctrl = new ScrollMagic.Controller();
 
-
-  // var elemIntro = document.querySelector(".intro");
-  // var elemIntroQuote = elemIntro.querySelector(".quote");
-  // var elemIntroTitle = elemIntro.querySelector("h1");
-
-  // Intro screen
-  // new ScrollMagic.Scene({
-  //   triggerElement: elemIntro,
-  //   triggerHook: 0,
-  //   duration: "200%"
-  // })
-  // .setPin(elemIntro)
-  // .setTween(new TimelineMax().add([
-  //   TweenMax.to(elemIntroQuote, 1, { top: 0, ease: Linear.easeNone }),
-  //   TweenMax.to(elemIntroQuote, 1, { opacity: 0, ease: Power1.easeIn }),
-  //   TweenMax.to(elemIntro, 1, { backgroundColor: "#999", ease: Power1.easeIn }),
-  //   TweenMax.to(elemIntroTitle, 1, { opacity: 1, ease: Linear.easeNone })
-  // ]))
-  // .addIndicators()
-  // .addTo(ctrl);
-
-
   sections = _.map($("section"), function (section, i) {
     return {
       id: $(section).data("id"),
@@ -78,9 +56,7 @@ $(function () {
 
     var elemSection = section.elemSection;
 
-
     if (section.type === "intro") {
-
       new ScrollMagic.Scene({
         triggerElement: section.elemSplash,
         triggerHook: 0,
@@ -95,14 +71,26 @@ $(function () {
         TweenMax.fromTo(elemSection.querySelector(".introText"), 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeOut })
       ]))
       .addTo(ctrl);
-
-
-
     }
+
+    // if (section.type === "outro") {
+    //   new ScrollMagic.Scene({
+    //     triggerElement: section.elemSplash,
+    //     triggerHook: 0,
+    //     duration: "100%"
+    //   })
+    //   // .addIndicators()
+    //   .setPin(section.elemSplash)
+    //   .setTween(new TimelineMax().add([
+    //   ]))
+    //   .addTo(ctrl);
+    // }
+
+
+
 
 
     if (section.type === "chapter") {
-
       $(section.elemMapContainer).sticky(); // Map containers are sticky (sticky.js is used to avoid issues with nested Magic Scroll pins)
 
       new ScrollMagic.Scene({
