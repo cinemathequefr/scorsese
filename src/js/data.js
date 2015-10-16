@@ -19,18 +19,18 @@ var Data = (function () {
 
     places: [
       // 1 - Who's That Knocking at My Door (1967)
-      { id: 104, filmId: 1, lat: 40.64403, lng: -74.07219, name: "Staten Island Ferries", videoId: 142512156 },
-      { id: 106, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Mott Street", videoId: 142512229 },
-      { id: 115, filmId: 1, lat: 40.72326, lng: -73.99426, name: "Mario le boucher", videoId: 142512291 },
+      { id: 104, filmId: 1, lat: 40.64403, lng: -74.07219, name: "JR séduit «&nbsp;the Girl&nbsp;» sur les quais de Staten Island", videoId: 142512156 },
+      { id: 106, filmId: 1, lat: 40.71974, lng: -73.99622, name: "Rixe entre bandes rivales dans les rues de Little Italy", videoId: 142512229 },
+      { id: 115, filmId: 1, lat: 40.72326, lng: -73.99426, name: "Scènes de la vie quotidienne dans Elizabeth Street, qui a vu grandir Martin Scorsese", videoId: 142512291 },
 
       // 2 - Mean Streets (1973)
-      { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Vieille cathédrale Saint-Patrick", videoId: 141537578 },
-      { id: 2, filmId: 2, lat: 40.72176, lng: -73.99707, name: "Volpe Bar", videoId: 141537816 },
-      { id: 3, filmId: 2, lat: 40.71816, lng: -73.99794, name: "Mulberry St and Hester St", videoId: 141537586 },
-      { id: 4, filmId: 2, lat: 40.71810, lng: -74.01280, name: "The Bridge", videoId: 141537581 },
-      { id: 5, filmId: 2, lat: 40.71930, lng: -73.99732, name: "Mulberry St", videoId: 141537580 },
-      { id: 6, filmId: 2, lat: 40.72075, lng: -73.99710, name: "394 Broome St", videoId: 141537582 },
-      { id: 7, filmId: 2, lat: 40.73120, lng: -74.00167, name: "323 6th Ave - Waverly Theater", videoId: 141537579 },
+      { id: 1, filmId: 2, lat: 40.72358, lng: -73.99518, name: "Charlie prie dans la cathédrale Saint-Patrick", videoId: 141537578 },
+      { id: 2, filmId: 2, lat: 40.72176, lng: -73.99707, name: "Le Volpe Bar, lieu de rendez-vous de Charlie et de sa bande", videoId: 141537816 },
+      { id: 3, filmId: 2, lat: 40.71816, lng: -73.99794, name: "Les Fêtes de San Gennaro dans Mulberry Street", videoId: 141537586 },
+      { id: 4, filmId: 2, lat: 40.71810, lng: -74.01280, name: "Petits trafics sur les bords de l'Hudson", videoId: 141537581 },
+      { id: 5, filmId: 2, lat: 40.71930, lng: -73.99732, name: "Charlie dans les rues de Little Italy", videoId: 141537580 },
+      { id: 6, filmId: 2, lat: 40.72075, lng: -73.99710, name: "Menus larcins dans les rues de Little Italy", videoId: 141537582 },
+      { id: 7, filmId: 2, lat: 40.73120, lng: -74.00167, name: "Charlie s'aventure dans Greenwich Village", videoId: 141537579 },
 
       // // 3 - Taxi Driver (1976)
       { id: 8, filmId: 3, lat: 40.76987, lng: -73.99031, name: "W57th Street", videoId: 141555221 },

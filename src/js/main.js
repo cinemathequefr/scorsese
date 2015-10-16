@@ -23,7 +23,7 @@ $(function () {
       var color = mrk.group.color.replace(/#/gi, "");
       mapView.bounce(mrk.marker);
       if (videoId) {
-        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0&amp;color=" + color + "&amp;autoplay=1' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " - " + name + "</div>";
+        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0&amp;color=" + color + "&amp;autoplay=1' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " <br>" + name + "</div>";
           mapView.infoWindow().open(mrk.marker, content);
       }
     });
@@ -127,6 +127,13 @@ $(function () {
     }
 
 
+  });
+
+
+
+
+  $(".menu").on("click", "div", function () {
+    ctrl.scrollTo("#" + $(this).data("id"));
   });
 
 
