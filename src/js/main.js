@@ -60,15 +60,17 @@ $(function () {
       new ScrollMagic.Scene({
         triggerElement: section.elemSplash,
         triggerHook: 0,
-        duration: "100%"
+        duration: "200%"
       })
       // .addIndicators()
       .setPin(section.elemSplash)
       .setTween(new TimelineMax().add([
-        TweenMax.fromTo(section.elemOverlay, 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeIn }),
-        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 1, { opacity: 0 }, { opacity: 1, ease: Power1.easeIn }),
-        TweenMax.fromTo(elemSection.querySelector("h1"), 1, { top: "85vh", opacity: 0 }, { top: "50vh", opacity: 1, ease: Power1.easeIn }),
-        TweenMax.fromTo(elemSection.querySelector(".introText"), 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeOut })
+        TweenMax.fromTo(section.elemOverlay, 2, { opacity: 1 }, { opacity: 0, ease: Power1.easeIn }),
+        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 2, { opacity: 0 }, { opacity: 0.5, ease: Linear.easeNone }),
+        TweenMax.fromTo(elemSection.querySelector("h1"), 2, { top: "85vh", opacity: 0 }, { top: "50vh", opacity: 1, ease: Power1.easeOut }),
+        TweenMax.fromTo(elemSection.querySelector(".introText"), 2, { opacity: 1 }, { opacity: 0, ease: Power1.easeOut })
+      ]).add([
+        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 1, { opacity: 0.5 }, { opacity: 1, ease: Power1.easeIn }),
       ]))
       .addTo(ctrl);
     }
