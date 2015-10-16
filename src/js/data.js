@@ -4,7 +4,6 @@ var Data = (function () {
       { id: 1, title: "Who's That Knocking at My Door" },
       { id: 2, title: "Mean Streets" },
       { id: 3, title: "Taxi Driver" },
-      // { id: 4, title: "New York, New York" },
       { id: 5, title: "Raging Bull" },
       { id: 6, title: "La Valse des pantins" },
       { id: 7, title: "After Hours" },
@@ -12,7 +11,8 @@ var Data = (function () {
       { id: 9, title: "Le Temps de l'innocence" },
       { id: 10, title: "À tombeau ouvert" },
       { id: 11, title: "Gangs of New York" },
-      { id: 13, title: "Le Loup de Wall Street" }
+      { id: 13, title: "Le Loup de Wall Street" },
+      { id: 14, title: "Apprentissages (New York Stories)" }
     ],
 
 
@@ -63,6 +63,11 @@ var Data = (function () {
       { id: 38, filmId: 7, lat: 40.72230, lng: -73.99714, name: "Spring St", videoId: 142231471 },
       { id: 40, filmId: 7, lat: 40.72090, lng: -74.00068, name: "Club Berlin, Broadway &amp; Grand St", videoId: 142231483 },
 
+      // 14 - New York Stories - Apprentissages (1989)
+      { id: 112, filmId: 14, lat: 40.75203, lng: -74.00502, name: "", videoId: 142625571 },
+      { id: 113, filmId: 14, lat: 40.71697, lng: -74.00784, name: "", videoId: 142625689 },
+      { id: 114, filmId: 14, lat: 40.72554, lng: -73.98947, name: "", videoId: 142625733 },
+
       // 8 - Les Affranchis (1990)
       { id: 41, filmId: 8, lat: 40.76768, lng: -73.89987, name: "Airline Diner, 69-35 Astoria Blvd N, East Elmhurst", videoId: 142231514 },
       { id: 42, filmId: 8, lat: 40.77276, lng: -73.91525, name: "23-86 31st St, Long Island City", videoId: 142231530 },
@@ -84,7 +89,7 @@ var Data = (function () {
       // 9 - Le Temps de l'innocence (1993)
       { id: 51, filmId: 9, lat: 40.73769, lng: -73.9867, name: "Gramercy Park", videoId: 142364730 },
       { id: 52, filmId: 9, lat: 40.86352, lng: -73.88209, name: "Enid A. Haupt Conservatory", videoId: 142364864 },
-      { id: 53, filmId: 9, lat: 40.71435, lng: -74.00047, name: "Five Points", videoId: 142364896 },
+      { id: 53, filmId: 9, lat: 40.73428, lng: -73.98828, name: "Five Points", videoId: 142364896 },
       { id: 107, filmId: 9, lat: 40.78122, lng: -73.96665, name: "Central Park - Mrs. Mingott's House", videoId: 142364924 },
 
       // 10 - À tombeau ouvert (1999)
@@ -94,27 +99,22 @@ var Data = (function () {
       { id: 109, filmId: 10, lat: 40.76402, lng: -73.99215, name: "", videoId: 142260878 },
 
       // 11 - Gangs of New York (2002)
-      { id: 100, filmId: 11, lat: 40.71435, lng: -74.00047, name: "", videoId: 142272316 },
+      { id: 100, filmId: 11, lat: 40.715024, lng: -74.001820, name: "", videoId: 142272316 },
       { id: 101, filmId: 11, lat: 40.70423, lng: -73.99276, name: "", videoId: 142272381 },
-      { id: 102, filmId: 11, lat: 40.71968, lng: -73.99717, name: "", videoId: 142272454 },
       { id: 110, filmId: 11, lat: 40.7154, lng: -74.00002, name: "", videoId: 142272489 },
 
       // 13 - Le Loup de Wall Street (2013)
       { id: 73, filmId: 13, lat: 40.76021, lng: -73.97677, name: "666 5th Ave", videoId: 140303118 },
       { id: 74, filmId: 13, lat: 40.85186, lng: -73.56462, name: "39 Chestnut Hill Drive", videoId: 140303160 },
       { id: 75, filmId: 13, lat: 40.70687, lng: -74.01126, name: "New York Stock Exchange", videoId: 140303182 },
-      // { id: 76, filmId: 13, lat: 40.75901, lng: -73.98447, name: "Equitable Building, 120 Broadway", videoId: 140303199 },
       { id: 77, filmId: 13, lat: 40.72703, lng: -73.86385, name: "Shalimar Diner, 6368 Austin Street at 63rd Drive", videoId: 140303231 },
       { id: 78, filmId: 13, lat: 41.01093, lng: -73.84652, name: "Frank's Best Auto Body", videoId: 140303241 },
-      // { id: 79, filmId: 13, lat: 40.97721, lng: -73.74199, name: "500 Mamaroneck Ave", videoId: 140303251 },
       { id: 80, filmId: 13, lat: 40.85176, lng: -73.71874, name: "Hoffstot Lane", videoId: 140303261 },
       { id: 81, filmId: 13, lat: 40.76250, lng: -73.97385, name: "Trump Tower, 725 Fifth Avenue", videoId: 140303280 },
       { id: 82, filmId: 13, lat: 40.75771, lng: -73.96609, name: "Penthouse on the 32nd floor of the Milan Condominium, 300 East 55th Street", videoId: 140303322 },
       { id: 83, filmId: 13, lat: 40.75831, lng: -73.97186, name: "Pool Room of the Four Seasons Restaurant, 99 East 52nd Street ", videoId: 140303352 },
       { id: 84, filmId: 13, lat: 40.90899, lng: -73.54416, name: "333 Bayville Ave, Bayville, north of Oyster Bay, Long Island", videoId: 140303372 },
-      // { id: 85, filmId: 13, lat: 40.79388, lng: -73.93440, name: "Rao's Restaurant, 455 East 114th Street at Pleasant Avenue, East Harlem", videoId: 140303397 },
       { id: 86, filmId: 13, lat: 40.71215, lng: -74.01700, name: "North Cove Marina, 385 South End Avenue", videoId: 140303409 },
-      // { id: 87, filmId: 13, lat: 40.96904, lng: -73.95493, name: "Closter Plaza, 71 Vervalen Street, Closter", videoId: 140303426 },
       { id: 88, filmId: 13, lat: 40.98562, lng: -73.70661, name: "Willow Ridge Country Club, 123 North Street, Harrison", videoId: 140303449 },
       { id: 89, filmId: 13, lat: 40.75482, lng: -74.00706, name: "West 30th Street Heliport, West 30th Street at 12th Avenue / Hudson River Greenway, Chelsea", videoId: 140303465 }
     ],
@@ -122,14 +122,14 @@ var Data = (function () {
       { id: 1, color: "#999933", places: [104, 106, 115] }, // Who's That Knocking at My Door
       { id: 2, color: "#4821d9", places: [1, 2, 3, 4, 5, 6, 7] }, // Mean Streets
       { id: 3, color: "#f2ce18", places: [8, 9, 12, 17, 20] }, // Taxi Driver
-      // { id: 4, color: "#ffffff", places: [] }, // New York, New York
       { id: 5, color: "#e51300", places: [24, 25, 26, 27, 28, 29, 103] }, // Raging Bull
       { id: 6, color: "#74b336", places: [30, 31, 32] }, // The King of Comedy
       { id: 7, color: "#9933ff", places: [33, 36, 37, 38, 40] }, // After Hours
+      { id: 14, color: "#ffffff", places: [112, 113, 114] }, // Apprentissages
       { id: 8, color: "#b35995", places: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 90, 91, 92, 93, 94, 95] }, // Les Affranchis
       { id: 9, color: "#bf8f4c", places: [51, 52, 53, 107] }, // Le Temps de l'innocence
       { id: 10, color: "#3366ff", places: [61, 64, 108, 109] }, // À tombeau ouvert
-      { id: 11, color: "#ff3366", places: [100, 101, 102, 110] }, // Gangs of New York
+      { id: 11, color: "#ff3366", places: [100, 101, 110] }, // Gangs of New York
       { id: 13, color: "#3366cc", places: [73, 74, 75, 77, 78, 80, 81, 82, 83, 84, 86, 88, 89] } // Le Loup de Wall Street
     ],
 
