@@ -5,29 +5,30 @@ html, body {
   margin: 0;
 }
 
-
-body {}
-
 section {
   position: relative;
   z-index: 1;
 }
+
+section .overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #000;
+}
+
 
 .quote {
   font-family: Source Sans Pro; font-weight: 300; font-size: 2.5rem;
   line-height: 1.4;
 }
 
-.intro {
-  position: relative;
-  height: 100vh;
+
+
+section.intro {
   background-color: #000; color: #fff;
-  z-index: 1;
-  /*padding-top: 50%;*/
 }
 
-
-.intro h1 {
+section.intro h1 {
   display: block; position: fixed;
   top: 50vh;
   margin: 0; padding: 0;
@@ -35,11 +36,20 @@ section {
   line-height: 6.5rem;
   text-transform: uppercase;
   transform: translateY(-50%);
-  opacity: 0;
+  opacity: 0; filter: alpha(opacity=0);
+  /*color: #ff0;*/
+  /*text-shadow: 0 0 1px rgba(0, 0, 0, .5);*/
+
+}
+
+section.intro .introBackground {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-repeat: no-repeat; background-position: 50% 0%; background-size: cover;
 }
 
 
-.intro .quote {
+section.intro .introText {
   display: block; position: absolute;
   top: 50vh;
   font-size: 1.75rem;
@@ -60,25 +70,16 @@ section {
   height: 100vh;
 }
 
-
-
 .splash {
-  position: relative; overflow: hidden;
-  display: block;
+  display: block; position: relative; overflow: hidden;
   height: 100vh;
-  background-repeat: no-repeat;
-  background-position: 50% 0%;
-  background-size: cover;
+  color: #fff;
+  background-color: #000;
+  background-repeat: no-repeat; background-position: 50% 0%; background-size: cover;
   z-index: 1;
 }
 
-.splash > .overlay {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background-color: #000; opacity: 1;
-}
-
-.splash .quote {
+section.chapter .quote {
   display: block; position: absolute;
   top: 50%;
   width: 100%;
@@ -87,10 +88,10 @@ section {
   transform: translateY(-50%);
 }
 
-.splash .quote:before { content: "«";}
-.splash .quote:after { content: "»";}
+section.chapter .quote:before { content: "«";}
+section.chapter .quote:after { content: "»";}
 
-.splash .title {
+section.chapter  .title {
   display: block; position: fixed;
   top: 50%;
   max-width: 800px;
@@ -102,20 +103,20 @@ section {
   transform: translateY(-50%);
 }
 
-.year {
+section.chapter .year {
   font-family: Source Sans Pro;
   display: block;
   margin-top: -1.5rem;
   font-size: 4rem;
 }
 
-.content {
+section.chapter .content {
   position: relative;
   background-color: #fff;
   z-index: 2;
 }
 
-.text {
+section.chapter .text {
   padding: 64px 0;
 }
 
@@ -123,12 +124,11 @@ section {
   margin-top: 96px;
 }
 
-
-.text:last-child {
+section.chapter .text:last-child {
   padding-bottom: 35vh;
 }
 
-.text p {
+section.chapter .text p {
   width: 600px;
   margin-left: auto; margin-right: auto;
   color: #333;
@@ -136,7 +136,7 @@ section {
   line-height: 1.75;
 }
 
-section span.place {
+section.chapter span.place {
   border-bottom: solid 2px #aaa;
   cursor: pointer;
   transition: 0.25s;
@@ -180,22 +180,3 @@ section[data-id='13'] span.place { border-color: #36c; color: #36c; }
   position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
   z-index: 1;
 }
-
-.videothumb {
-  display: block; overflow: hidden;
-  width: 200px;
-  height: 150px; line-height: 150px;
-  color: rgba(255, 255, 255, 0.85);
-  background-position: 50% 50%; background-repeat: no-repeat; background-color: #000; background-size: contain;
-  font-size: 2rem;
-  text-align: center;
-  cursor: pointer;
-}
-
-.videothumb:before {
-  font-family: icons;
-  content: "\e800";
-}
-
-
-

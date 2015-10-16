@@ -39,33 +39,31 @@ $(function () {
   ctrl = new ScrollMagic.Controller();
 
 
-  var elemIntro = document.querySelector(".intro");
-  var elemIntroQuote = elemIntro.querySelector(".quote");
-  var elemIntroTitle = elemIntro.querySelector("h1");
+  // var elemIntro = document.querySelector(".intro");
+  // var elemIntroQuote = elemIntro.querySelector(".quote");
+  // var elemIntroTitle = elemIntro.querySelector("h1");
 
   // Intro screen
-  new ScrollMagic.Scene({
-    triggerElement: elemIntro,
-    triggerHook: 0,
-    duration: "200%"
-  })
-  .setPin(elemIntro)
-  .setTween(new TimelineMax().add([
-    TweenMax.to(elemIntroQuote, 1, { top: 0, ease: Linear.easeNone }),
-    TweenMax.to(elemIntroQuote, 1, { opacity: 0, ease: Power1.easeIn }),
-    TweenMax.to(elemIntro, 1, { backgroundColor: "#999", ease: Power1.easeIn }),
-    TweenMax.to(elemIntroTitle, 1, { opacity: 1, ease: Linear.easeNone })
-  ]))
+  // new ScrollMagic.Scene({
+  //   triggerElement: elemIntro,
+  //   triggerHook: 0,
+  //   duration: "200%"
+  // })
+  // .setPin(elemIntro)
+  // .setTween(new TimelineMax().add([
+  //   TweenMax.to(elemIntroQuote, 1, { top: 0, ease: Linear.easeNone }),
+  //   TweenMax.to(elemIntroQuote, 1, { opacity: 0, ease: Power1.easeIn }),
+  //   TweenMax.to(elemIntro, 1, { backgroundColor: "#999", ease: Power1.easeIn }),
+  //   TweenMax.to(elemIntroTitle, 1, { opacity: 1, ease: Linear.easeNone })
+  // ]))
   // .addIndicators()
-  .addTo(ctrl);
+  // .addTo(ctrl);
 
 
-
-
-
-  sections = _($("section")).map(function (section, i) {
+  sections = _.map($("section"), function (section, i) {
     return {
       id: $(section).data("id"),
+      type: _.find(["intro", "chapter", "outro"], function (t) { return $(section).hasClass(t); }),
       elemSection: section,
       elemSplash: section.querySelector(".splash"),
       elemOverlay: section.querySelector(".overlay"),
@@ -74,56 +72,72 @@ $(function () {
       elemText: section.querySelector(".text"),
       elemMapContainer: section.querySelector(".mapContainer")
     };
-  }).value();
-
+  });
 
   _.forEach(sections, function (section, i) {
-    var tween = new TimelineMax().add([
-      TweenMax.to(section.elemSplash, 1, { backgroundPosition: "0% 100%", ease: Linear.easeNone }),
-      TweenMax.to(section.elemOverlay, 1, { opacity: 0, ease: Power1.easeIn }),
-      TweenMax.to(section.elemQuote, 1, { opacity: 0, top: 0, ease: Linear.easeNone }),
-      TweenMax.to(section.elemTitle, 1, { opacity: 1, ease: Linear.easeNone })
-    ]);
 
-    new ScrollMagic.Scene({
-      triggerElement: section.elemSplash,
-      triggerHook: 0,
-      duration: "100%"
-    })
-    .setPin(section.elemSplash)
-    .setTween(tween)
-    .addTo(ctrl)
-    .on("start", function (e) {
-      var mapId, j;
+    var elemSection = section.elemSection;
 
-      // Set splash title visibility (solves issue with position: fixed of the following section titles and map interaction)
-      $(".splash .title")
-      .css({ display: "none"})
-      .eq(e.scrollDirection === "FORWARD" || e.scrollDirection === "PAUSED" ? i : Math.max(i - 1, 0))
-      .css({ display: "block"});
 
-      // Place the map in the section we're entering (downwards i, upwards i - 1)
-      j = (e.scrollDirection === "FORWARD" ? i : Math.max(i - 1, 0));
-      mapId = $(sections[j].elemMapContainer).data("id");
-      mapView.insert(mapId);
-      mapView.drawMarkers(mapId);
-      mapView.infoWindow().close();
-    });
+    if (section.type === "intro") {
 
-    if (sections[i + 1]) {
-      new ScrollMagic.Scene({ // When the next splash is about to enter from the bottom, we pin the text so the splash slides on top of it.
-        triggerElement: sections[i + 1].elemSplash,
-        triggerHook: 1,
+      new ScrollMagic.Scene({
+        triggerElement: section.elemSplash,
+        triggerHook: 0,
         duration: "100%"
       })
-      .setPin(section.elemSection, { pushFollowers: false })
+      // .addIndicators()
+      .setPin(section.elemSplash)
+      .setTween(new TimelineMax().add([
+        TweenMax.fromTo(section.elemOverlay, 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeIn }),
+        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 1, { opacity: 0 }, { opacity: 1, ease: Power1.easeIn }),
+        TweenMax.fromTo(elemSection.querySelector("h1"), 1, { top: "85vh", opacity: 0 }, { top: "50vh", opacity: 1, ease: Power1.easeIn }),
+        TweenMax.fromTo(elemSection.querySelector(".introText"), 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeOut })
+      ]))
       .addTo(ctrl);
+
+
+
     }
 
-    if (section.elemMapContainer) {
-      $(section.elemMapContainer).sticky(); // Pin the map (sticky.js is used to avoid issues with nested Magic Scroll pins)
+
+    if (section.type === "chapter") {
+
+      $(section.elemMapContainer).sticky(); // Map containers are sticky (sticky.js is used to avoid issues with nested Magic Scroll pins)
+
+      new ScrollMagic.Scene({
+        triggerElement: section.elemSplash,
+        triggerHook: 0,
+        duration: "100%"
+      })
+      .setPin(section.elemSplash)
+      .setTween(new TimelineMax().add([
+        TweenMax.fromTo(section.elemSplash, 1, { backgroundPosition: "50% -50%" }, { backgroundPosition: "50% 100%", ease: Linear.easeNone } ),
+        TweenMax.fromTo(section.elemOverlay, 1, { opacity: 1 }, { opacity: 0, ease: Power1.easeIn }),
+        TweenMax.fromTo(section.elemQuote, 1, { opacity: 1, top: "50%" }, { opacity: 0, top: 0, ease: Linear.easeNone }),
+        TweenMax.fromTo(section.elemTitle, 1, { opacity: 0 }, { opacity: 1, ease: Linear.easeNone })
+      ]))
+      // .addIndicators()
+      .addTo(ctrl)
+      .on("start", function (e) {
+        var mapId;
+        var newSection = sections[e.scrollDirection === "FORWARD" || e.scrollDirection === "PAUSED" ? i : Math.max(i - 1, 0)]; // The section we are entering
+
+        if (newSection.type === "chapter") {
+          $("section.chapter .title").hide(); 
+          $(newSection.elemTitle).show(); // Set splash title visibility (solves issue with `position: fixed` of the following section titles and map interaction)
+
+          mapId = $(newSection.elemMapContainer).data("id"); // Move the map to the new chapter and update it
+          mapView.insert(mapId);
+          mapView.drawMarkers(mapId);
+          mapView.infoWindow().close();
+        }
+      });
+
     }
-    
+
+
   });
+
 
 });
