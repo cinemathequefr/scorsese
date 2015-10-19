@@ -32,15 +32,12 @@ var Data = (function () {
       { id: 6, filmId: 2, lat: 40.72075, lng: -73.99710, name: "Menus larcins dans les rues de Little Italy", videoId: 141537582 },
       { id: 7, filmId: 2, lat: 40.73120, lng: -74.00167, name: "Charlie s'aventure dans Greenwich Village", videoId: 141537579 },
 
-      // // 3 - Taxi Driver (1976)
+      // 3 - Taxi Driver (1976)
       { id: 8, filmId: 3, lat: 40.76987, lng: -73.99031, name: "Travis sort du dépot de taxis situé sur la 57e rue, en plein Hell's Kitchen", videoId: 141555221 },
       { id: 9, filmId: 3, lat: 40.76041, lng: -73.98745, name: "Travis va dans un cinéma porno du quartier de Times Square", videoId: 141556259 },
       { id: 12, filmId: 3, lat: 40.75890, lng: -73.98513, name: "Errances de Travis à bord de son taxi dans le quartier de Times Square", videoId: 141555224 },
-      // { id: 15, filmId: 3, lat: 40.74335, lng: -73.98413, name: "Park Ave S &amp; E 28th St", videoId: 141555216 },
       { id: 17, filmId: 3, lat: 40.73202, lng: -73.98668, name: "Près d'Union Square, Travis rencontre le souteneur Sport et sa prostituée, Iris", videoId: 141555225 },
       { id: 20, filmId: 3, lat: 40.76741, lng: -73.98239, name: "Betsy et Travis se retrouvent dans un café de Colombus Circle", videoId: 141804226 },
-
-      // 4 - New York, New York (1977)
 
       // 5 - Raging Bull (1980)
       { id: 24, filmId: 5, lat: 40.73399, lng: -73.98891, name: "Jake LaMotta s'entraîne avec son frère Joey au Gramercy Gym près d'Union Square", videoId: 142231219 },
@@ -100,7 +97,7 @@ var Data = (function () {
       { id: 110, filmId: 11, lat: 40.7154, lng: -74.00002, name: "La guerre des gangs à New York en 1846", videoId: 142272489 },
 
       // 13 - Le Loup de Wall Street (2013)
-      { id: 73, filmId: 13, lat: 40.76021, lng: -73.97677, name: "Mark Hann apprend les ficelles du métier à Jordan Belfort dans le restaurant de la banque Rotschild", videoId: 140303118 },
+      { id: 73, filmId: 13, lat: 40.76021, lng: -73.97677, name: "Mark Hann enseigne les ficelles du métier à Jordan Belfort dans le restaurant de la banque Rotschild", videoId: 140303118 },
       { id: 74, filmId: 13, lat: 40.85186, lng: -73.56462, name: "Jordan Belfort acquiert un manoir dans les quartiers huppés de Long Island", videoId: 140303160 },
       { id: 75, filmId: 13, lat: 40.70687, lng: -74.01126, name: "Jordan Belfort débarque à Wall Street", videoId: 140303182 },
       { id: 77, filmId: 13, lat: 40.72703, lng: -73.86385, name: "Jordan Belfort rencontre Donnie Azoff dans le Queens", videoId: 140303231 },  
@@ -111,7 +108,7 @@ var Data = (function () {
       { id: 83, filmId: 13, lat: 40.75831, lng: -73.97186, name: "Jordan demande Naomi en mariage dans la «&nbsp;Pool Room&nbsp;» du restaurant Four Seasons", videoId: 140303352 },
       { id: 84, filmId: 13, lat: 40.90899, lng: -73.54416, name: "Mariage de Naomi et Jordan Belfort à Oyster Bay", videoId: 140303372 },
       { id: 86, filmId: 13, lat: 40.71215, lng: -74.01700, name: "Le FBI rend visite à Jordan Belfort sur son yacht, arrimé dans la North Cove Marina", videoId: 140303409 },
-      { id: 88, filmId: 13, lat: 40.98562, lng: -73.70661, name: "Jordan se rend dans un country club, censément à quelques kilomètres de sa maison de Long Island (mais la scène est tournée près de Port Chester, au Nord de New York)", videoId: 140303449 },
+      { id: 88, filmId: 13, lat: 40.98562, lng: -73.70661, name: "Jordan se rend à son country club, proche de sa maison de Long Island (la scène est tournée à Port Chester, au Nord de New York)", videoId: 140303449 },
       { id: 89, filmId: 13, lat: 40.75482, lng: -74.00706, name: "Jordan Belfort est appréhendé par le FBI sur le tarmac de l'héliport de Chelsea", videoId: 140303465 }
     ],
     groups: [ // Each group is shown on a different map

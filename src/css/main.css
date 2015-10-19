@@ -6,6 +6,20 @@ html, body {
   font-family: Source Sans Pro; font-weight: 400;
 }
 
+hr {
+  display: block;
+  margin: 64px auto;
+  width: 120px;
+  border: none;
+  border-bottom: solid 1px #ddd;
+}
+
+
+ul {
+  margin: 0; padding: 0;
+  list-style-type: none;
+}
+
 section {
   position: relative;
   z-index: 1;
@@ -57,14 +71,22 @@ section.intro .introText {
   transform: translateY(-50%);
 }
 
+#arrow {
+  display: block; position: fixed; bottom: 0; opacity: 0.5;
+  margin: 12px auto;
+  width: 900px; height: 400px;
+}
 
 
 section.outro {
   background-color: #000;
-  padding-bottom: 30vh;
+  overflow: hidden;
+
 }
 
 section.outro .outroText {
+  /*position: absolute;*/
+  /*overflow: hidden;*/
   width: 700px;
   margin: 15vh auto;
   color: #eee;
@@ -202,7 +224,7 @@ section[data-id='13'] span.place { border-color: #36c; color: #36c; }
 a.logocf {
   display: block; position: fixed;
   top: 6px; right: 6px;
-  width: 110px; height: 50px;
+  width: 94px; height: 45px;
   outline: none; color: inherit; text-decoration: none;
   z-index: 500;
 }
@@ -217,3 +239,11 @@ a.logocf {
   color: #fff;
   cursor: pointer;
 }
+
+
+.sources {
+  margin-top: 48px;
+  font-size: 1rem;
+  color: #ccc;
+}
+

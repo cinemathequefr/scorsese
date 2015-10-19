@@ -23,8 +23,8 @@ $(function () {
       var color = mrk.group.color.replace(/#/gi, "");
       mapView.bounce(mrk.marker);
       if (videoId) {
-        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0&amp;color=" + color + "&amp;autoplay=1' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + id + " - " + filmTitle + " <br>" + name + "</div>";
-          mapView.infoWindow().open(mrk.marker, content);
+        content = "<iframe src='//player.vimeo.com/video/" + videoId + "?title=0&amp;byline=0&amp;portrait=0&amp;color=" + color + "&amp;autoplay=1' width='480' height='270' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><div>" + filmTitle + " &ndash; " + name + "</div>";
+        mapView.infoWindow().open(mrk.marker, content);
       }
     });
   });
@@ -62,35 +62,17 @@ $(function () {
         triggerHook: 0,
         duration: "200%"
       })
-      // .addIndicators()
       .setPin(section.elemSplash)
       .setTween(new TimelineMax().add([
         TweenMax.fromTo(section.elemOverlay, 2, { opacity: 1 }, { opacity: 0, ease: Power1.easeIn }),
-        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 2, { opacity: 0 }, { opacity: 0.5, ease: Linear.easeNone }),
-        TweenMax.fromTo(elemSection.querySelector("h1"), 2, { top: "85vh", opacity: 0 }, { top: "50vh", opacity: 1, ease: Power1.easeOut }),
+        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 2, { opacity: 0 }, { opacity: 1, ease: Power1.easeIn }),
+        TweenMax.fromTo(elemSection.querySelector("h1"), 2, { top: "85vh", opacity: 0 }, { top: "61.67vh", opacity: 0.67, ease: Linear.easeNone }),
         TweenMax.fromTo(elemSection.querySelector(".introText"), 2, { opacity: 1 }, { opacity: 0, ease: Power1.easeOut })
       ]).add([
-        TweenMax.fromTo(elemSection.querySelector(".introBackground"), 1, { opacity: 0.5 }, { opacity: 1, ease: Power1.easeIn }),
+        TweenMax.to(elemSection.querySelector("h1"), 1, { top: "50vh", opacity: 1, ease: Linear.easeNone })
       ]))
       .addTo(ctrl);
     }
-
-    // if (section.type === "outro") {
-    //   new ScrollMagic.Scene({
-    //     triggerElement: section.elemSplash,
-    //     triggerHook: 0,
-    //     duration: "100%"
-    //   })
-    //   // .addIndicators()
-    //   .setPin(section.elemSplash)
-    //   .setTween(new TimelineMax().add([
-    //   ]))
-    //   .addTo(ctrl);
-    // }
-
-
-
-
 
     if (section.type === "chapter") {
       $(section.elemMapContainer).sticky(); // Map containers are sticky (sticky.js is used to avoid issues with nested Magic Scroll pins)
@@ -107,7 +89,6 @@ $(function () {
         TweenMax.fromTo(section.elemQuote, 1, { opacity: 1, top: "50%" }, { opacity: 0, top: 0, ease: Linear.easeNone }),
         TweenMax.fromTo(section.elemTitle, 1, { opacity: 0 }, { opacity: 1, ease: Linear.easeNone })
       ]))
-      // .addIndicators()
       .addTo(ctrl)
       .on("start", function (e) {
         var mapId;
@@ -125,16 +106,11 @@ $(function () {
       });
 
     }
-
-
   });
-
-
 
 
   $(".menu").on("click", "div", function () {
     ctrl.scrollTo("#" + $(this).data("id"));
   });
-
 
 });
